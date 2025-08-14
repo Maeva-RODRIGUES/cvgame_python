@@ -1,4 +1,4 @@
-"""## 🎮 Hack Ton Job - CV Game
+## 🎮 Hack Ton Job - CV Game
 
 ![Python](https://img.shields.io/badge/code-python-blue?logo=python)
 ![Status](https://img.shields.io/badge/status-en%20cours-orange)

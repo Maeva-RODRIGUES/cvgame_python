@@ -24,7 +24,17 @@ while running:
 
     # BG
     screen.fill(PURPLE_BG)
-
+    
+    #------Eléments du jeu ici------
+    
+    
+    
+    
+    
+    
+    
+    
+    #-------------------------------
 
     # Rafraîchissement de l'écran
     pygame.display.flip()
