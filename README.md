@@ -6,6 +6,7 @@
 
 
 [![Typing SVG](https://readme-typing-svg.demolab.com/?lines=Bienvenue+dans+Hack+ton+job+CV+game+!)](https://git.io/typing-svg).
+
 Un mini jeu développé en Python avec Pygame, qui transforme mon **parcours professionnel** en une **expérience ludique et interactive**.
 
 👩‍💻 Le joueur incarne **Maëva** (*moi-même*), développeuse en reconversion, et traverse différentes étapes de son parcours (RH, reconversion, formation, projets, etc.) tout en découvrant mes compétences, mes projets et mes objectifs de carrière.  

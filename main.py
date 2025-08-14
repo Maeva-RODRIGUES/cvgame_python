@@ -1,39 +1,36 @@
 import pygame
+from settings import (
+    SCREEN_WIDTH,
+    SCREEN_HEIGHT,
+    PURPLE_BG,
+    FPS,
+    GAME_TITLE
+)
 
-# --- Initialisation de Pygame ---
 pygame.init()
 
-# --- Configuration de la fenêtre ---
-SCREEN_WIDTH = 1280
-SCREEN_HEIGHT = 720
+# Configuration de la fenêtre
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-pygame.display.set_caption("Hack Ton Job - CV Game")
-
-# --- Couleur de fond (branding violet pastel) ---
-BACKGROUND_COLOR = (43, 14, 63)  # #2B0E3F en RGB
-
-# --- Configuration du framerate ---
+pygame.display.set_caption(GAME_TITLE)
 clock = pygame.time.Clock()
-FPS = 60
 
-# --- Boucle principale ---
+# Boucle principale
 running = True
 while running:
-    # --- Gestion des événements ---
+    # Gestion des événements
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
 
-    # --- Dessin de l'écran ---
-    screen.fill(BACKGROUND_COLOR)
+    # BG
+    screen.fill(PURPLE_BG)
 
-    # --- Rendu du jeu (à compléter avec tes sprites/classes plus tard) ---
 
-    # --- Mise à jour de l'affichage ---
+    # Rafraîchissement de l'écran
     pygame.display.flip()
 
-    # --- Limitation du framerate ---
+    # Limite les FPS
     clock.tick(FPS)
 
-# --- Fermeture propre de Pygame ---
+
 pygame.quit()
