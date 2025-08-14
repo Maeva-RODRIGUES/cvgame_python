@@ -1,11 +1,12 @@
-"""# 🎮 Hack Ton Job - CV Game
+"""## 🎮 Hack Ton Job - CV Game
 
 ![Python](https://img.shields.io/badge/code-python-blue?logo=python)
 ![Status](https://img.shields.io/badge/status-en%20cours-orange)
 ![Pygame](https://img.shields.io/badge/pygame-2.5.2-lightgrey?logo=pygame)
 
 
-[![Typing SVG](https://readme-typing-svg.demolab.com/?lines=Bienvenue+dans+Hack+ton+job+CV+game!)](https://git.io/typing-svg), un mini jeu développé en Python avec Pygame, qui transforme mon **parcours professionnel** en une **expérience ludique et interactive**.
+[![Typing SVG](https://readme-typing-svg.demolab.com/?lines=Bienvenue+dans+Hack+ton+job+CV+game+!)](https://git.io/typing-svg).
+Un mini jeu développé en Python avec Pygame, qui transforme mon **parcours professionnel** en une **expérience ludique et interactive**.
 
 👩‍💻 Le joueur incarne **Maëva** (*moi-même*), développeuse en reconversion, et traverse différentes étapes de son parcours (RH, reconversion, formation, projets, etc.) tout en découvrant mes compétences, mes projets et mes objectifs de carrière.  
 Une manière originale de **me présenter aux recruteurs** et **de démontrer mes compétences Python** dans un projet complet.
