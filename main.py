@@ -14,7 +14,7 @@ pygame.init()
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption(GAME_TITLE)
 clock = pygame.time.Clock()
-platform = Platform(y_pos=200) 
+platform = Platform(y_pos=380) 
 
 
 # Boucle principale
