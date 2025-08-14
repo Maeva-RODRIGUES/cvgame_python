@@ -13,14 +13,14 @@ def load_image(name, colorkey=None, scale=1):
     except pg.error as e:
         print(f"Impossible de charger l'image {name} : {e}")
         raise SystemExit(e)
-
+    
     # Mise à l’échelle
     size = image.get_size()
     size = (int(size[0] * scale), int(size[1] * scale))
     image = pg.transform.scale(image, size)
 
     # Convertir l'image avec alpha (canal de transparence)
-    image = image.convert_alpha()
+    # image = image.convert_alpha()
 
     # Gérer la transparence avec colorkey
     if colorkey is not None:

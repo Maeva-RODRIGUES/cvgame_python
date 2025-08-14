@@ -6,6 +6,7 @@ from settings import (
     FPS,
     GAME_TITLE
 )
+from classes.platform import Platform
 
 pygame.init()
 
@@ -13,6 +14,8 @@ pygame.init()
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption(GAME_TITLE)
 clock = pygame.time.Clock()
+platform = Platform(y_pos=200) 
+
 
 # Boucle principale
 running = True
@@ -26,7 +29,8 @@ while running:
     screen.fill(PURPLE_BG)
     
     #------Eléments du jeu ici------
-    
+   
+    platform.draw(screen)
     
     
     
