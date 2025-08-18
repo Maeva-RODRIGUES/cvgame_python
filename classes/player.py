@@ -4,8 +4,8 @@ from utils import load_image
 class Player(pg.sprite.Sprite):
     def __init__(self, x, y):
         super().__init__()
-        self.image, self.rect = load_image("player/idle.png", scale=1)
-        self.rect.topleft = (x, y)
+        self.image, self.rect = load_image("player/idle.png", 0.10)
+        self.rect.x = x
         self.velocity = pg.math.Vector2(0, 0)
         self.speed = 5
         self.gravity = 0.5
@@ -34,8 +34,8 @@ class Player(pg.sprite.Sprite):
         self.rect.y += self.velocity.y
 
         # Sol temporaire
-        if self.rect.bottom >= 380:  
-            self.rect.bottom = 380
+        if self.rect.bottom >= 700:  
+            self.rect.bottom = 700
             self.velocity.y = 0
             self.on_ground = True
 
