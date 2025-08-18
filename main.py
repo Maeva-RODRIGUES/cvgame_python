@@ -7,15 +7,18 @@ from settings import (
     GAME_TITLE
 )
 from classes.platform import Platform
+from classes.player import Player
 
 pygame.init()
 
-# Configuration de la fenêtre
+# Configuration 
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption(GAME_TITLE)
 clock = pygame.time.Clock()
-platform = Platform(y_pos=380) 
 
+# Objets du jeu
+platform = Platform(y_pos=380) 
+player = Player(x=100, y=300)
 
 # Boucle principale
 running = True
@@ -25,26 +28,16 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
-    # BG
-    screen.fill(PURPLE_BG)
-    
-    #------Eléments du jeu ici------
-   
-    platform.draw(screen)
-    
-    
-    
-    
-    
-    
-    
-    #-------------------------------
+    # ----- LOGIQUE DU JEU -----
+    keys = pygame.key.get_pressed()
+    player.update(keys)
 
-    # Rafraîchissement de l'écran
+    # ----- AFFICHAGE -----
+    screen.fill(PURPLE_BG)          # fond
+    platform.draw(screen)           # sol
+    player.draw(screen)             # personnage
+
     pygame.display.flip()
-
-    # Limite les FPS
     clock.tick(FPS)
-
 
 pygame.quit()
