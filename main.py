@@ -35,7 +35,6 @@ font = pygame.font.Font(None, 48)
 title_text = font.render("AIDE MAËVA À MONTER EN COMPÉTENCES", True, TEXT_COLOR)
 title_rect = title_text.get_rect(center=(SCREEN_WIDTH // 2, 40))  
 
-
 # Scroll
 scroll_x = 0
 
@@ -49,6 +48,10 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+            
+    # Appui sur espace pour afficher/masquer la bulle
+        if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
+                bubble.toggle()
 
     # ----- LOGIQUE DU JEU -----
     keys = pygame.key.get_pressed()
@@ -65,14 +68,6 @@ while running:
             bubble.set_level(levels.current_level)
             levels.next_level()
             
-     # Si on appuie sur ESPACE, on passe au dialogue suivant
-    if keys[pygame.K_SPACE]:
-        next_level = levels.next_level()
-        if next_level:
-            bubble.set_level(next_level)
-        else:
-            bubble.hide()  
-        
     # ----- AFFICHAGE -----
     screen.fill(PURPLE_BG)          # fond
     platform.draw(screen)           # sol

@@ -19,10 +19,9 @@ class DialogueBubble:
         self.current_level = "level_1"
         self.text = []
         self.title = ""
-      
+        self.visible = False
         self.current_index = 0
         self.text_lines = []
-        self.title = ""
         self.active = False
         self._load_dialogue()
 
@@ -51,19 +50,14 @@ class DialogueBubble:
         self.current_level = level_name
         self._load_dialogue()
         self.active = True
+        
+    def toggle(self):  
+        """Afficher ou masquer la bulle"""
+        self.visible = not self.visible
       
-    def show(self):
-        """Affiche la bulle"""
-        self.visible = True
-        self.alpha = 0
-    
-    def hide(self):
-        """Masquer la bulle"""
-        self.visible = False
-
     def draw(self):
         """Affiche la bulle de dialogue"""
-        if not self.active:
+        if not self.visible:
             return  
         
         bubble_width = 100
