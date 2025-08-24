@@ -10,6 +10,8 @@ from settings import (
 )
 from classes.platform import Platform
 from classes.player import Player
+from classes.dialogue_bubble import DialogueBubble
+from classes.level import LevelManager
 
 pygame.init()
 
@@ -21,6 +23,8 @@ clock = pygame.time.Clock()
 # Objets du jeu
 platform = Platform(y_pos=380) 
 player = Player(x=50, y=0)  
+levels = LevelManager("data/levels.json")
+bubble = DialogueBubble(screen, "data/dialogues.json", font_size=24, color=TEXT_COLOR)
 
 # Ajuste la position Y du joueur APRÈS création
 player.rect.bottom = platform.rect.top + PLAYER_OFFSET_Y
@@ -34,6 +38,9 @@ title_rect = title_text.get_rect(center=(SCREEN_WIDTH // 2, 40))
 # Scroll
 scroll_x = 0
 
+# On initialise le premier dialogue
+bubble.set_level(levels.current_level)
+
 # Boucle principale
 running = True
 while running:
@@ -45,19 +52,31 @@ while running:
     # ----- LOGIQUE DU JEU -----
     keys = pygame.key.get_pressed()
     
-    
     # Effet parallaxe : on décale le sol au lieu de déplacer l'écran
     if keys[pygame.K_LEFT]:
         scroll_x += player.speed  
     elif keys[pygame.K_RIGHT]:
         scroll_x -= player.speed  
-
-
+        
+    # Vérifier si le joueur atteint un badge
+    for badge in levels.badges:
+        if player.rect.colliderect(pygame.Rect(badge["x"], badge["y"], 50, 50)):
+            bubble.set_level(levels.current_level)
+            levels.next_level()
+            
+     # Si on appuie sur ESPACE, on passe au dialogue suivant
+    if keys[pygame.K_SPACE]:
+        next_level = levels.next_level()
+        if next_level:
+            bubble.set_level(next_level)
+        else:
+            bubble.hide()  
+        
     # ----- AFFICHAGE -----
     screen.fill(PURPLE_BG)          # fond
     platform.draw(screen)           # sol
     player.draw(screen)             # personnage
-    
+    bubble.draw()                  # bulle de dialogue
     
     # Dessiner le sol avec répétition pour l'effet infini 
     platform_width = platform.image.get_width()
