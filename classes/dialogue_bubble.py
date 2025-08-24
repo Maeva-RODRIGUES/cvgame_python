@@ -11,6 +11,10 @@ class DialogueBubble:
         # Charger le JSON des dialogues
         with open(json_path, "r", encoding="utf-8") as f:
             self.dialogues = json.load(f)
+            
+         # Charger l'image de la bulle avec transparence
+        self.bubble_image = pygame.image.load("assets/objects/bubble.png").convert_alpha() 
+        self.bubble_width, self.bubble_height = self.bubble_image.get_size()  
         
         self.current_level = "level_1"
         self.text = []
@@ -61,15 +65,19 @@ class DialogueBubble:
         """Affiche la bulle de dialogue"""
         if not self.active:
             return  
-        bubble_width = 700
-        bubble_height = 160
+        
+        bubble_width = 600
+        bubble_height = 140
+        
+         # Dessiner l'image de bulle
+        self.screen.blit(self.bubble_image, (bubble_width, bubble_height))  
         
         bubble_rect = pygame.Rect(20, BUBBLE_OFFSET_Y, bubble_width // 2, bubble_height - 20)
         
 
         # Fond semi-transparent
         surface = pygame.Surface((bubble_width, bubble_height), pygame.SRCALPHA)
-        surface.fill((0, 0, 0, 180))
+        surface.fill((0, 0, 0, 0))
         self.screen.blit(surface, bubble_rect)
 
         # Titre du dialogue
