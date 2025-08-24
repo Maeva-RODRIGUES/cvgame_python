@@ -3,7 +3,7 @@ import json
 from settings import BUBBLE_OFFSET_Y
 
 class DialogueBubble:
-    def __init__(self, screen, json_path, font_size=24, color=(255, 255, 255)):
+    def __init__(self, screen, json_path, font_size=14, color=(255, 255, 255)):
         self.screen = screen
         self.font = pygame.font.Font(None, font_size)
         self.color = color
@@ -66,14 +66,17 @@ class DialogueBubble:
         if not self.active:
             return  
         
-        bubble_width = 600
-        bubble_height = 140
+        bubble_width = 100
+        bubble_height = 100
         
-         # Dessiner l'image de bulle
-        self.screen.blit(self.bubble_image, (bubble_width, bubble_height))  
+        bubble_x = 10      
+        bubble_y = 80
+
+        # Dessiner l'image de bulle à la nouvelle position
+        self.screen.blit(self.bubble_image, (bubble_x, bubble_y))  
         
-        bubble_rect = pygame.Rect(20, BUBBLE_OFFSET_Y, bubble_width // 2, bubble_height - 20)
-        
+        bubble_rect = pygame.Rect(35, BUBBLE_OFFSET_Y, bubble_width // 2, bubble_height - 20)
+       
 
         # Fond semi-transparent
         surface = pygame.Surface((bubble_width, bubble_height), pygame.SRCALPHA)

@@ -28,7 +28,7 @@ PADDING = 20
 # Offset pour aligner le joueur sur la plateforme
 PLAYER_OFFSET_Y = 300
 
-BUBBLE_OFFSET_Y = 280
+BUBBLE_OFFSET_Y = 220
 
 # Types de badges
 BADGE_TYPES = [
