@@ -1,0 +1,94 @@
+{
+  "level_1": {
+    "title": "RH Origins",
+    "platforms": [
+      {"x": 0, "y": 700, "width": 1024, "height": 68},
+      {"x": 200, "y": 600, "width": 150, "height": 20},
+      {"x": 400, "y": 500, "width": 150, "height": 20},
+      {"x": 600, "y": 400, "width": 150, "height": 20}
+    ],
+    "badges": [
+      {"x": 650, "y": 360, "type": "rh"}
+    ]
+  },
+  "level_2": {
+    "title": "Déclic",
+    "platforms": [
+      {"x": 0, "y": 700, "width": 1024, "height": 68},
+      {"x": 150, "y": 550, "width": 100, "height": 20},
+      {"x": 350, "y": 450, "width": 100, "height": 20},
+      {"x": 550, "y": 350, "width": 100, "height": 20},
+      {"x": 750, "y": 450, "width": 100, "height": 20}
+    ],
+    "badges": [
+      {"x": 775, "y": 410, "type": "reconversion"}
+    ]
+  },
+  "level_3": {
+    "title": "Bootcamp",
+    "platforms": [
+      {"x": 0, "y": 700, "width": 1024, "height": 68},
+      {"x": 100, "y": 600, "width": 80, "height": 20},
+      {"x": 250, "y": 520, "width": 80, "height": 20},
+      {"x": 400, "y": 440, "width": 80, "height": 20},
+      {"x": 550, "y": 360, "width": 80, "height": 20},
+      {"x": 700, "y": 280, "width": 80, "height": 20},
+      {"x": 850, "y": 400, "width": 120, "height": 20}
+    ],
+    "badges": [
+      {"x": 875, "y": 360, "type": "web"}
+    ]
+  },
+  "level_4": {
+    "title": "Alternance CGI",
+    "platforms": [
+      {"x": 0, "y": 700, "width": 1024, "height": 68},
+      {"x": 200, "y": 580, "width": 120, "height": 20},
+      {"x": 450, "y": 480, "width": 120, "height": 20},
+      {"x": 700, "y": 380, "width": 120, "height": 20}
+    ],
+    "badges": [
+      {"x": 730, "y": 340, "type": "abap"}
+    ]
+  },
+  "level_5": {
+    "title": "Projets Persos",
+    "platforms": [
+      {"x": 0, "y": 700, "width": 1024, "height": 68},
+      {"x": 100, "y": 600, "width": 100, "height": 20},
+      {"x": 300, "y": 500, "width": 100, "height": 20},
+      {"x": 500, "y": 400, "width": 100, "height": 20},
+      {"x": 700, "y": 300, "width": 100, "height": 20},
+      {"x": 850, "y": 500, "width": 150, "height": 20}
+    ],
+    "badges": [
+      {"x": 900, "y": 460, "type": "opensource"}
+    ]
+  },
+  "level_6": {
+    "title": "Spécialisation Python/IA",
+    "platforms": [
+      {"x": 0, "y": 700, "width": 1024, "height": 68},
+      {"x": 150, "y": 550, "width": 120, "height": 20},
+      {"x": 350, "y": 400, "width": 120, "height": 20},
+      {"x": 550, "y": 300, "width": 120, "height": 20},
+      {"x": 750, "y": 450, "width": 150, "height": 20}
+    ],
+    "badges": [
+      {"x": 800, "y": 410, "type": "ia"}
+    ]
+  },
+  "level_7": {
+    "title": "Objectif Alternance",
+    "platforms": [
+      {"x": 0, "y": 700, "width": 1024, "height": 68},
+      {"x": 200, "y": 600, "width": 100, "height": 20},
+      {"x": 400, "y": 500, "width": 100, "height": 20},
+      {"x": 600, "y": 400, "width": 100, "height": 20},
+      {"x": 800, "y": 300, "width": 150, "height": 20}
+    ],
+    "badges": [
+      {"x": 850, "y": 260, "type": "objectif"}
+    ]
+  }
+}
