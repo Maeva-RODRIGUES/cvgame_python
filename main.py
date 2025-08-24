@@ -5,7 +5,8 @@ from settings import (
     PURPLE_BG,
     FPS,
     GAME_TITLE,
-    TEXT_COLOR
+    TEXT_COLOR,
+    PLAYER_OFFSET_Y
 )
 from classes.platform import Platform
 from classes.player import Player
@@ -19,7 +20,10 @@ clock = pygame.time.Clock()
 
 # Objets du jeu
 platform = Platform(y_pos=380) 
-player = Player(x=0, y=300)
+player = Player(x=50, y=0)  
+
+# Ajuste la position Y du joueur APRÈS création
+player.rect.bottom = platform.rect.top + PLAYER_OFFSET_Y
 
 # Texte du jeu
 pygame.font.init()
@@ -40,7 +44,7 @@ while running:
 
     # ----- LOGIQUE DU JEU -----
     keys = pygame.key.get_pressed()
-    player.update(keys)
+    
     
     # Effet parallaxe : on décale le sol au lieu de déplacer l'écran
     if keys[pygame.K_LEFT]:

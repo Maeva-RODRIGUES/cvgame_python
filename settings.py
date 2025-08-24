@@ -19,3 +19,6 @@ FPS = 60
 
 # Marges ou padding éventuels
 PADDING = 20
+
+# Offset pour aligner le joueur sur la plateforme
+PLAYER_OFFSET_Y = 300
