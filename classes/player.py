@@ -4,7 +4,7 @@ from utils import load_image
 class Player(pg.sprite.Sprite):
     def __init__(self, x, y):
         super().__init__()
-        self.image, self.rect = load_image("player/idle.png", 0.10)
+        self.image, self.rect = load_image("player/idle.png", size=(128, 128))
         self.rect.x = x
         self.velocity = pg.math.Vector2(0, 0)
         self.speed = 5
