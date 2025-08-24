@@ -19,14 +19,16 @@ clock = pygame.time.Clock()
 
 # Objets du jeu
 platform = Platform(y_pos=380) 
-player = Player(x=100, y=300)
+player = Player(x=0, y=300)
 
 # Texte du jeu
 pygame.font.init()
-font = pygame.font.Font(None, 48)  # Police par défaut, taille 48
+font = pygame.font.Font(None, 48)  
 title_text = font.render("AIDE MAËVA À MONTER EN COMPÉTENCES", True, TEXT_COLOR)
-title_rect = title_text.get_rect(center=(SCREEN_WIDTH // 2, 40))  # Centré en haut
+title_rect = title_text.get_rect(center=(SCREEN_WIDTH // 2, 40))  
 
+# Scroll
+scroll_x = 0
 
 # Boucle principale
 running = True
@@ -39,11 +41,25 @@ while running:
     # ----- LOGIQUE DU JEU -----
     keys = pygame.key.get_pressed()
     player.update(keys)
+    
+    # Effet parallaxe : on décale le sol au lieu de déplacer l'écran
+    if keys[pygame.K_LEFT]:
+        scroll_x += player.speed  
+    elif keys[pygame.K_RIGHT]:
+        scroll_x -= player.speed  
+
 
     # ----- AFFICHAGE -----
     screen.fill(PURPLE_BG)          # fond
     platform.draw(screen)           # sol
     player.draw(screen)             # personnage
+    
+    
+    # Dessiner le sol avec répétition pour l'effet infini 
+    platform_width = platform.image.get_width()
+    for i in range(-1, SCREEN_WIDTH // platform_width + 2):
+        x_pos = i * platform_width + (scroll_x % platform_width)
+        screen.blit(platform.image, (x_pos, platform.rect.y))
     
      # Texte
     screen.blit(title_text, title_rect)
