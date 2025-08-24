@@ -1,0 +1,37 @@
+{
+  "level_1": {
+    "title": "RH Origins",
+    "dialogue": "13 ans d'expérience dans les Ressources Humaines. J'ai accompagné de nombreuses équipes et découvert ma passion pour la tech !",
+    "badge": "rh"
+  },
+  "level_2": {
+    "title": "Déclic",
+    "dialogue": "Le déclic ! Reconversion vers le développement web. Fini les entretiens, place au code ! 💻",
+    "badge": "reconversion"
+  },
+  "level_3": {
+    "title": "Bootcamp",
+    "dialogue": "3 mois intensifs pour apprendre HTML, CSS, JavaScript, React, Node.js. Que d'apprentissages !",
+    "badge": "web"
+  },
+  "level_4": {
+    "title": "Alternance CGI",
+    "dialogue": "Développeuse ABAP SAP en alternance chez CGI. L'entreprise, les vrais projets, l'équipe... le rêve !",
+    "badge": "abap"
+  },
+  "level_5": {
+    "title": "Projets Persos",
+    "dialogue": "NextOne, Redplast, ApiMiel, Hack Ton Job : je construis mes propres applications ! Open source power 🚀",
+    "badge": "opensource"
+  },
+  "level_6": {
+    "title": "Spécialisation Python/IA",
+    "dialogue": "Je me spécialise en Python, DevOps et Intelligence Artificielle. L'avenir, c'est maintenant !",
+    "badge": "ia"
+  },
+  "level_7": {
+    "title": "Objectif Alternance",
+    "dialogue": "Objectif : intégrer DevUniversity en janvier 2026 ! Prête pour de nouveaux défis 🎯",
+    "badge": "objectif"
+  }
+}
