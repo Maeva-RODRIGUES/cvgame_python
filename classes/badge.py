@@ -39,10 +39,10 @@ class Badge:
             "rh": NEON_PINK,
             "reconversion": NEON_BLUE,
             "web": GOLD,
-            "abap": (128, 255, 128),  # Vert clair
+            "abap": (128, 255, 128),      # Vert clair
             "opensource": (255, 128, 0),  # Orange
-            "ia": (128, 0, 255),  # Violet
-            "objectif": (255, 255, 128)  # Jaune clair
+            "ia": (128, 0, 255),          # Violet
+            "objectif": (255, 255, 128)   # Jaune clair
         }
         
         color = colors.get(self.badge_type, WHITE)

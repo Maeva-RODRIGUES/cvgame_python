@@ -1,5 +1,6 @@
 import pygame
 import json
+from settings import BUBBLE_OFFSET_Y
 
 class DialogueBubble:
     def __init__(self, screen, json_path, font_size=24, color=(255, 255, 255)):
@@ -12,6 +13,9 @@ class DialogueBubble:
             self.dialogues = json.load(f)
         
         self.current_level = "level_1"
+        self.text = []
+        self.title = ""
+      
         self.current_index = 0
         self.text_lines = []
         self.title = ""
@@ -43,10 +47,15 @@ class DialogueBubble:
         self.current_level = level_name
         self._load_dialogue()
         self.active = True
+      
+    def show(self):
+        """Affiche la bulle"""
+        self.visible = True
+        self.alpha = 0
     
     def hide(self):
         """Masquer la bulle"""
-        self.active = False
+        self.visible = False
 
     def draw(self):
         """Affiche la bulle de dialogue"""
@@ -55,7 +64,7 @@ class DialogueBubble:
         bubble_width = 700
         bubble_height = 160
         
-        bubble_rect = pygame.Rect(20, 20, bubble_width // 2, bubble_height - 20)
+        bubble_rect = pygame.Rect(20, BUBBLE_OFFSET_Y, bubble_width // 2, bubble_height - 20)
         
 
         # Fond semi-transparent

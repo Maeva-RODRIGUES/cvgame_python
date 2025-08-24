@@ -35,6 +35,7 @@ font = pygame.font.Font(None, 48)
 title_text = font.render("AIDE MAËVA À MONTER EN COMPÉTENCES", True, TEXT_COLOR)
 title_rect = title_text.get_rect(center=(SCREEN_WIDTH // 2, 40))  
 
+
 # Scroll
 scroll_x = 0
 
@@ -76,7 +77,7 @@ while running:
     screen.fill(PURPLE_BG)          # fond
     platform.draw(screen)           # sol
     player.draw(screen)             # personnage
-    bubble.draw()                  # bulle de dialogue
+    bubble.draw()                   # bulle de dialogue
     
     # Dessiner le sol avec répétition pour l'effet infini 
     platform_width = platform.image.get_width()
