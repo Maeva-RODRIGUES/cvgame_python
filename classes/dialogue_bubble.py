@@ -16,6 +16,9 @@ class DialogueBubble:
         self.bubble_image = pygame.image.load("assets/objects/bubble.png").convert_alpha() 
         self.bubble_width, self.bubble_height = self.bubble_image.get_size()  
         
+        # Son pour l'apparition de la bulle <= ajout 20h05
+        self.bubble_sound = pygame.mixer.Sound("assets/sounds/pop.wav")  
+
         self.current_level = "level_1"
         self.text = []
         self.title = ""
@@ -23,6 +26,7 @@ class DialogueBubble:
         self.current_index = 0
         self.text_lines = []
         self.active = False
+        self.scale = 0
         self._load_dialogue()
 
     def _load_dialogue(self):
@@ -54,6 +58,7 @@ class DialogueBubble:
     def toggle(self):  
         """Afficher ou masquer la bulle"""
         self.visible = not self.visible
+        self.bubble_sound.play() 
       
     def draw(self):
         """Affiche la bulle de dialogue"""

@@ -14,6 +14,7 @@ from classes.dialogue_bubble import DialogueBubble
 from classes.level import LevelManager
 
 pygame.init()
+pygame.mixer.init()
 
 # Configuration 
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
