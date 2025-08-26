@@ -50,9 +50,15 @@ while running:
         if event.type == pygame.QUIT:
             running = False
             
-    # Appui sur espace pour afficher/masquer la bulle
+    # Gestion machine à écrire + toggle
         if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
-                bubble.toggle()
+            # Si la bulle est cachée → on l'affiche
+                if not bubble.visible:
+                    bubble.toggle()
+                else:
+                # Si la bulle est visible → soit on skip le texte, soit on la ferme
+                    bubble.skip_or_hide()
+
 
     # ----- LOGIQUE DU JEU -----
     keys = pygame.key.get_pressed()
@@ -66,8 +72,9 @@ while running:
     # Vérifier si le joueur atteint un badge
     for badge in levels.badges:
         if player.rect.colliderect(pygame.Rect(badge["x"], badge["y"], 50, 50)):
-            bubble.set_level(levels.current_level)
-            levels.next_level()
+            levels.next_level()                               
+            bubble.set_level(levels.current_level)             
+            bubble.toggle()                        
             
     # ----- AFFICHAGE -----
     screen.fill(PURPLE_BG)          # fond

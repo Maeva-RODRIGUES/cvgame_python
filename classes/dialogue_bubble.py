@@ -27,8 +27,16 @@ class DialogueBubble:
         self.text_lines = []
         self.active = False
         self.scale = 0
-        self._load_dialogue()
+        
+        # variables effet machine à écrire
+        self.typing_index = 0
+        self.typing_speed = 2          # Plus le chiffre est grand → plus c’est lent
+        self.last_update_time = 0
+        self.finished_typing = False
 
+        self._load_dialogue()
+        
+    
     def _load_dialogue(self):
         """Charge le dialogue et le titre du niveau courant"""
         data = self.dialogues.get(self.current_level, {})
@@ -55,10 +63,23 @@ class DialogueBubble:
         self._load_dialogue()
         self.active = True
         
+        
     def toggle(self):  
         """Afficher ou masquer la bulle"""
         self.visible = not self.visible
         self.bubble_sound.play() 
+        
+    def skip_or_hide(self): 
+        """Affiche le texte instantanément ou masque la bulle"""
+        if not self.visible:
+            return
+        if not self.finished_typing:
+            # Afficher tout le texte
+            self.typing_index = sum(len(line) for line in self.text)
+            self.finished_typing = True
+        else:
+            # Masquer la bulle si tout est affiché
+            self.visible = False
       
     def draw(self):
         """Affiche la bulle de dialogue"""
@@ -85,8 +106,26 @@ class DialogueBubble:
         # Titre du dialogue
         title_surface = self.font.render(self.title, True, (255, 223, 0))
         self.screen.blit(title_surface, (bubble_rect.x + 15, bubble_rect.y + 10))
+        
+        # logique effet machine à écrire
+        now = pygame.time.get_ticks()
+        if not self.finished_typing and now - self.last_update_time > 30 * self.typing_speed:
+            self.typing_index += 1
+            self.last_update_time = now
+            total_length = sum(len(line) for line in self.text)
+            if self.typing_index >= total_length:
+                self.finished_typing = True
 
-        # Texte du dialogue
+
+        # Texte du dialogue : affichage progressif lettre par lettre
+        char_count = 0
         for i, line in enumerate(self.text):
-            dialogue_surface = self.font.render(line, True, self.color)
+            visible_text = ""
+            for char in line:
+                if char_count < self.typing_index:
+                    visible_text += char
+                    char_count += 1
+                else:
+                    break
+            dialogue_surface = self.font.render(visible_text, True, self.color)
             self.screen.blit(dialogue_surface, (bubble_rect.x + 15, bubble_rect.y + 50 + i * 30))
