@@ -14,6 +14,20 @@ class LevelManager:
         self.width = 0
         self.load_level()
 
+    @property
+    def number(self):
+        """Numéro du niveau courant (1 pour level_1)."""
+        return int(self.current_level.split("_")[1])
+
+    @property
+    def count(self):
+        """Nombre total de niveaux."""
+        return len(self.levels)
+
+    @property
+    def title(self):
+        return self.levels[self.current_level]["title"]
+
     def load_level(self):
         """Charge les données du niveau actuel"""
         data = self.levels.get(self.current_level, {})
@@ -32,8 +46,7 @@ class LevelManager:
 
     def next_level(self):
         """Passe au niveau suivant"""
-        level_number = int(self.current_level.split("_")[1])
-        next_level = f"level_{level_number + 1}"
+        next_level = f"level_{self.number + 1}"
 
         if next_level in self.levels:
             self.current_level = next_level

@@ -25,6 +25,7 @@ from classes.sign import Sign
 from classes.player import Player
 from classes.dialogue_bubble import DialogueBubble
 from classes.level import LevelManager
+from classes.hud import Hud
 from utils import DATA_DIR
 
 LEVELS_PATH = "data/levels.json"
@@ -55,6 +56,7 @@ class Game:
         self.ground = Ground(GROUND_Y)
         self.sign = Sign(SIGN_X, GROUND_Y)
         self.player = Player(x=PLAYER_START_X, y=0)
+        self.hud = Hud()
 
         self.state = State.TITLE
         self.running = True
@@ -69,6 +71,7 @@ class Game:
         self.bubble.set_level(self.levels.current_level)
         self.player.place(PLAYER_START_X, GROUND_Y)
         self.camera_x = 0
+        self.collected = []  # types des badges ramassés, dans l'ordre
         # Vrai entre le ramassage du badge et la fermeture de la bulle
         self.level_complete = False
 
@@ -143,6 +146,7 @@ class Game:
         for badge in self.levels.badges:
             if not badge.collected and self.player.rect.colliderect(badge.rect):
                 badge.collect()
+                self.collected.append(badge.badge_type)
                 self.badge_sound.play()
                 # Bulle du niveau terminé ; le passage au suivant se fait à sa fermeture
                 self.level_complete = True
@@ -233,6 +237,8 @@ class Game:
         self.player.draw(self.screen, cam)
         self.bubble.draw()
         self._draw_centered(self.title_text, 40)
+        self.hud.draw(self.screen, self.levels.number, self.levels.count,
+                      self.levels.title, self.collected)
 
     def _draw_end(self):
         # Version minimale : l'écran de fin complet arrive en 2.4
