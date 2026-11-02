@@ -8,8 +8,13 @@ from settings import (
     PURPLE_BG,
     FPS,
     GAME_TITLE,
+    GAME_SUBTITLE,
     TEXT_COLOR,
     GOLD,
+    WHITE,
+    DARK_PURPLE,
+    NEON_BLUE,
+    NEON_PINK,
     GROUND_Y,
     PLAYER_START_X,
     SIGN_X,
@@ -41,9 +46,10 @@ class Game:
         pygame.display.set_caption(GAME_TITLE)
         self.clock = pygame.time.Clock()
 
+        self.big_font = pygame.font.Font(None, 96)
         self.title_font = pygame.font.Font(None, 48)
         self.text_font = pygame.font.Font(None, 32)
-        self.title_text = self.title_font.render("AIDE MAËVA À MONTER EN COMPÉTENCES", True, TEXT_COLOR)
+        self.title_text = self.title_font.render(GAME_SUBTITLE, True, TEXT_COLOR)
         self.badge_sound = pygame.mixer.Sound(os.path.join(DATA_DIR, BADGE_SOUND))
 
         self.ground = Ground(GROUND_Y)
@@ -159,10 +165,60 @@ class Game:
         self.screen.blit(surface, surface.get_rect(center=(SCREEN_WIDTH // 2, y)))
 
     def _draw_title(self):
-        # Version minimale : l'écran titre complet arrive en 2.2
-        self._draw_centered(self.title_text, SCREEN_HEIGHT // 2 - 40)
-        start = self.text_font.render("Appuie sur Espace pour commencer", True, GOLD)
-        self._draw_centered(start, SCREEN_HEIGHT // 2 + 30)
+        # Décor : le sol, le panneau et Maëva au départ
+        self.ground.draw(self.screen, 0)
+        self.sign.draw(self.screen, 0)
+        self.player.draw(self.screen, 0)
+
+        # Titre, puis sous-titre dans un cadre néon (comme la maquette)
+        self._draw_centered(self.big_font.render(GAME_TITLE, True, WHITE), 120)
+        box = pygame.Rect(0, 0, self.title_text.get_width() + 60, 64)
+        box.center = (SCREEN_WIDTH // 2, 215)
+        pygame.draw.rect(self.screen, DARK_PURPLE, box)
+        pygame.draw.rect(self.screen, NEON_PINK, box, 3)
+        self._draw_centered(self.title_text, box.centery)
+
+        # Contrôles : une ligne par action, touches dessinées à gauche
+        controls = [
+            (["left", "right"], "Se déplacer"),
+            (["up"], "Sauter"),
+            (["Espace"], "Ouvrir, accélérer ou fermer la bulle"),
+        ]
+        y = 310
+        for keys, action in controls:
+            x = SCREEN_WIDTH // 2 - 220
+            for key in keys:
+                x = self._draw_key(key, x, y) + 10
+            label = self.text_font.render(action, True, TEXT_COLOR)
+            self.screen.blit(label, label.get_rect(midleft=(SCREEN_WIDTH // 2 - 60, y + 22)))
+            y += 64
+
+        # Invitation à jouer, qui clignote
+        if (pygame.time.get_ticks() // 500) % 2 == 0:
+            start = self.text_font.render("Appuie sur Espace pour commencer", True, GOLD)
+            self._draw_centered(start, 530)
+
+    def _draw_key(self, key, x, y):
+        """Dessine une touche de clavier en (x, y) et renvoie son bord droit.
+
+        La police par défaut n'a pas les caractères flèches : on les trace en triangles.
+        """
+        label = None if key in ("left", "right", "up") else self.text_font.render(key, True, WHITE)
+        width = 44 if label is None else label.get_width() + 30
+        rect = pygame.Rect(x, y, width, 44)
+        pygame.draw.rect(self.screen, DARK_PURPLE, rect, border_radius=6)
+        pygame.draw.rect(self.screen, NEON_BLUE, rect, 2, border_radius=6)
+        cx, cy = rect.center
+        arrows = {
+            "left": [(cx - 9, cy), (cx + 7, cy - 9), (cx + 7, cy + 9)],
+            "right": [(cx + 9, cy), (cx - 7, cy - 9), (cx - 7, cy + 9)],
+            "up": [(cx, cy - 9), (cx - 9, cy + 7), (cx + 9, cy + 7)],
+        }
+        if label is None:
+            pygame.draw.polygon(self.screen, WHITE, arrows[key])
+        else:
+            self.screen.blit(label, label.get_rect(center=rect.center))
+        return rect.right
 
     def _draw_playing(self):
         # Décor avant le joueur : sol infini, panneau, plateformes, badge

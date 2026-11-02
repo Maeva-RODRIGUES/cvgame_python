@@ -15,6 +15,7 @@ GOLD = (255, 217, 61)          # #FFD93D
 
 # Titre du jeu
 GAME_TITLE = "Hack Ton Job - CV Game"
+GAME_SUBTITLE = "AIDE MAËVA À DÉCROCHER SON CDI"
 
 # Départ de chaque niveau (coordonnées monde)
 PLAYER_START_X = 50
