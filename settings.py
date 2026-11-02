@@ -16,6 +16,14 @@ GOLD = (255, 217, 61)          # #FFD93D
 # Titre du jeu
 GAME_TITLE = "Hack Ton Job - CV Game"
 
+# Départ de chaque niveau (coordonnées monde)
+PLAYER_START_X = 50
+SIGN_X = 130
+SIGN_HEIGHT = 90
+
+# Son joué au ramassage d'un badge (relatif à assets/)
+BADGE_SOUND = "sounds/badge.wav"
+
 # Physique du joueur (en pixels par frame)
 PLAYER_SPEED = 5
 PLAYER_JUMP_STRENGTH = 13   # vitesse verticale au moment du saut
