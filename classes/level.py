@@ -1,5 +1,6 @@
 import json
 from classes.platform import Platform
+from classes.badge import Badge
 
 class LevelManager:
     def __init__(self, json_path):
@@ -27,7 +28,7 @@ class LevelManager:
         badge_pos = data.get("badge_pos")
         self.badges = []
         if badge_pos:
-            self.badges = [{"x": badge_pos["x"], "y": badge_pos["y"], "type": data["badge"]}]
+            self.badges = [Badge(badge_pos["x"], badge_pos["y"], data["badge"])]
 
     def next_level(self):
         """Passe au niveau suivant"""

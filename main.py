@@ -65,12 +65,18 @@ while running:
     camera_x = player.rect.centerx - SCREEN_WIDTH // 2
     camera_x = max(0, min(camera_x, levels.width - SCREEN_WIDTH))
 
-    # Vérifier si le joueur atteint un badge
+    # Badges : animation, puis ramassage (une seule fois grâce à `collected`)
     for badge in levels.badges:
-        if player.rect.colliderect(pygame.Rect(badge["x"], badge["y"], 50, 50)):
+        badge.update()
+    for badge in levels.badges:
+        if not badge.collected and player.rect.colliderect(badge.rect):
+            badge.collect()
             levels.next_level()
+            # Retour au départ : évite de toucher aussitôt le badge du niveau suivant
+            player.place(50, GROUND_Y)
             bubble.set_level(levels.current_level)
             bubble.toggle()
+            break  # la liste des badges vient de changer de niveau
 
     # ----- 3. AFFICHAGE (coordonnées écran = monde - camera_x) -----
     screen.fill(PURPLE_BG)
@@ -79,6 +85,8 @@ while running:
     ground.draw(screen, camera_x)
     for platform in levels.platforms:
         platform.draw(screen, camera_x)
+    for badge in levels.badges:
+        badge.draw(screen, camera_x)
 
     player.draw(screen, camera_x)
     bubble.draw()

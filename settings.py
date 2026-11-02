@@ -58,6 +58,6 @@ PLATFORM_TILE_WIDTH = 40
 # Chemins des assets
 ASSETS_PATH = "assets/"
 PLAYER_PATH = ASSETS_PATH + "player/"
-BADGES_PATH = ASSETS_PATH + "badges/"
+BADGES_PATH = "badges/"  # relatif à assets/ (load_image ajoute déjà assets/)
 #BACKGROUNDS_PATH = ASSETS_PATH + "backgrounds/"
 #UI_PATH = ASSETS_PATH + "ui/"
