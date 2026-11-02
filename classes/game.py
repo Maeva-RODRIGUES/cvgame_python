@@ -1,3 +1,4 @@
+import asyncio
 from enum import Enum, auto
 
 import pygame
@@ -92,7 +93,9 @@ class Game:
 
     # ----- Boucle principale -----
 
-    def run(self):
+    async def run(self):
+        """Boucle asynchrone : dans le navigateur (pygbag), `await asyncio.sleep(0)`
+        rend la main au navigateur à chaque frame, sinon la page se fige."""
         while self.running:
             for event in pygame.event.get():
                 self.handle_event(event)
@@ -100,6 +103,7 @@ class Game:
             self.draw()
             pygame.display.flip()
             self.clock.tick(FPS)
+            await asyncio.sleep(0)
         pygame.quit()
 
     # ----- 1. Événements -----

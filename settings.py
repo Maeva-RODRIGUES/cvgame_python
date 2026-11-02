@@ -32,10 +32,10 @@ SIGN_X = 130
 SIGN_HEIGHT = 90
 
 # Sons
-BADGE_SOUND = ASSETS_DIR / "sounds" / "badge.wav"  # ramassage d'un badge
-BUBBLE_SOUND = ASSETS_DIR / "sounds" / "pop.wav"  # ouverture de la bulle
+BADGE_SOUND = ASSETS_DIR / "sounds" / "badge.ogg"  # ramassage d'un badge
+BUBBLE_SOUND = ASSETS_DIR / "sounds" / "pop.ogg"  # ouverture de la bulle
 # Joué une fois à l'arrivée sur l'écran de fin (Pixabay, Content License)
-END_SOUND = ASSETS_DIR / "sounds" / "item-collected-1-367087.mp3"
+END_SOUND = ASSETS_DIR / "sounds" / "item-collected-1-367087.ogg"
 
 # Physique du joueur (en pixels par frame)
 PLAYER_SPEED = 5
