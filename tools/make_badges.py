@@ -17,7 +17,7 @@ COLORS = {
     "rh": (255, 31, 143),
     "reconversion": (0, 245, 255),
     "web": (255, 217, 61),
-    "abap": (128, 255, 128),
+    "backend": (128, 255, 128),
     "fullstack": (255, 128, 0),
     "data": (128, 0, 255),
     "objectif": (255, 255, 128),
@@ -61,7 +61,7 @@ ICONS = {
         "wwwwwwwwww",
         "..........",
     ],
-    "abap": [  # engrenage : back-end
+    "backend": [  # engrenage : back-end
         "....ww....",
         ".ww.ww.ww.",
         ".wwwwwwww.",
