@@ -3,99 +3,118 @@
     "title": "RH Origins",
     "dialogue": "2010-2023 : 13 ans dans les RH. Recruter, accompagner, faire grandir les équipes... jusqu'à ce que la tech m'attrape !",
     "badge": "rh",
-    "width": 1280,
+    "width": 2000,
     "platforms": [
-      {"x": 0, "y": 700, "width": 1024, "height": 68},
-      {"x": 200, "y": 600, "width": 150, "height": 20},
-      {"x": 400, "y": 500, "width": 150, "height": 20},
-      {"x": 600, "y": 400, "width": 150, "height": 20}
+      {"x": 350, "y": 553, "width": 220},
+      {"x": 700, "y": 463, "width": 220},
+      {"x": 1050, "y": 553, "width": 200},
+      {"x": 1350, "y": 463, "width": 200},
+      {"x": 1650, "y": 373, "width": 250}
     ],
-    "badge_pos": {"x": 650, "y": 360}
+    "badge_pos": {"x": 1800, "y": 313}
   },
   "level_2": {
     "title": "Le déclic",
     "dialogue": "2023 : je choisis de me reconvertir dans le développement. Nouveau métier, même envie d'apprendre.",
     "badge": "reconversion",
-    "width": 1280,
+    "width": 2100,
     "platforms": [
-      {"x": 0, "y": 700, "width": 1024, "height": 68},
-      {"x": 150, "y": 550, "width": 100, "height": 20},
-      {"x": 350, "y": 450, "width": 100, "height": 20},
-      {"x": 550, "y": 350, "width": 100, "height": 20},
-      {"x": 750, "y": 450, "width": 100, "height": 20}
+      {"x": 300, "y": 553, "width": 180},
+      {"x": 600, "y": 463, "width": 180},
+      {"x": 900, "y": 373, "width": 180},
+      {"x": 1200, "y": 463, "width": 160},
+      {"x": 1500, "y": 553, "width": 160},
+      {"x": 1750, "y": 463, "width": 150},
+      {"x": 1900, "y": 373, "width": 180}
     ],
-    "badge_pos": {"x": 775, "y": 410}
+    "badge_pos": {"x": 1980, "y": 313}
   },
   "level_3": {
     "title": "La Piscine",
     "dialogue": "2024 : formation Développeur Web et Web Mobile. HTML, CSS, JavaScript, React, Node.js : mes premières applis !",
     "badge": "web",
-    "width": 1280,
+    "width": 2200,
     "platforms": [
-      {"x": 0, "y": 700, "width": 1024, "height": 68},
-      {"x": 100, "y": 600, "width": 80, "height": 20},
-      {"x": 250, "y": 520, "width": 80, "height": 20},
-      {"x": 400, "y": 440, "width": 80, "height": 20},
-      {"x": 550, "y": 360, "width": 80, "height": 20},
-      {"x": 700, "y": 280, "width": 80, "height": 20},
-      {"x": 850, "y": 400, "width": 120, "height": 20}
+      {"x": 250, "y": 553, "width": 160},
+      {"x": 530, "y": 463, "width": 160},
+      {"x": 810, "y": 373, "width": 160},
+      {"x": 1090, "y": 283, "width": 180},
+      {"x": 1390, "y": 373, "width": 160},
+      {"x": 1670, "y": 463, "width": 140},
+      {"x": 1880, "y": 373, "width": 130},
+      {"x": 2020, "y": 283, "width": 160}
     ],
-    "badge_pos": {"x": 875, "y": 360}
+    "badge_pos": {"x": 2080, "y": 223}
   },
   "level_4": {
     "title": "CGI - Back-end",
     "dialogue": "Novembre 2024 : alternance chez CGI avec la Wild Code School. Développement back-end ABAP sur SAP, dans l'aéronautique.",
     "badge": "abap",
-    "width": 1280,
+    "width": 2300,
     "platforms": [
-      {"x": 0, "y": 700, "width": 1024, "height": 68},
-      {"x": 200, "y": 580, "width": 120, "height": 20},
-      {"x": 450, "y": 480, "width": 120, "height": 20},
-      {"x": 700, "y": 380, "width": 120, "height": 20}
+      {"x": 300, "y": 553, "width": 150},
+      {"x": 560, "y": 463, "width": 140},
+      {"x": 820, "y": 373, "width": 140},
+      {"x": 1080, "y": 463, "width": 140},
+      {"x": 1340, "y": 373, "width": 140},
+      {"x": 1600, "y": 283, "width": 140},
+      {"x": 1880, "y": 373, "width": 140},
+      {"x": 2100, "y": 283, "width": 180}
     ],
-    "badge_pos": {"x": 730, "y": 340}
+    "badge_pos": {"x": 2180, "y": 223}
   },
   "level_5": {
     "title": "CGI - Fullstack",
     "dialogue": "Septembre 2025 : je passe fullstack chez CGI. React.js, Node.js et API REST. Et le titre Concepteur Développeur d'Applications (bac+3) en poche !",
     "badge": "fullstack",
-    "width": 1280,
+    "width": 2400,
     "platforms": [
-      {"x": 0, "y": 700, "width": 1024, "height": 68},
-      {"x": 100, "y": 600, "width": 100, "height": 20},
-      {"x": 300, "y": 500, "width": 100, "height": 20},
-      {"x": 500, "y": 400, "width": 100, "height": 20},
-      {"x": 700, "y": 300, "width": 100, "height": 20},
-      {"x": 850, "y": 500, "width": 150, "height": 20}
+      {"x": 280, "y": 553, "width": 140},
+      {"x": 540, "y": 463, "width": 120},
+      {"x": 780, "y": 373, "width": 120},
+      {"x": 1020, "y": 283, "width": 140},
+      {"x": 1300, "y": 373, "width": 120},
+      {"x": 1540, "y": 283, "width": 120},
+      {"x": 1780, "y": 373, "width": 120},
+      {"x": 2000, "y": 283, "width": 120},
+      {"x": 2200, "y": 283, "width": 180}
     ],
-    "badge_pos": {"x": 900, "y": 460}
+    "badge_pos": {"x": 2280, "y": 223}
   },
   "level_6": {
     "title": "Skeepers - Data",
     "dialogue": "Janvier 2026 : data engineer chez Skeepers. Pipelines Python, PySpark et Scala, Kafka, Temporal, jusqu'à 300 milliards de lignes !",
     "badge": "data",
-    "width": 1280,
+    "width": 2400,
     "platforms": [
-      {"x": 0, "y": 700, "width": 1024, "height": 68},
-      {"x": 150, "y": 550, "width": 120, "height": 20},
-      {"x": 350, "y": 400, "width": 120, "height": 20},
-      {"x": 550, "y": 300, "width": 120, "height": 20},
-      {"x": 750, "y": 450, "width": 150, "height": 20}
+      {"x": 300, "y": 553, "width": 130},
+      {"x": 550, "y": 463, "width": 120},
+      {"x": 790, "y": 373, "width": 110},
+      {"x": 1020, "y": 463, "width": 110},
+      {"x": 1250, "y": 373, "width": 110},
+      {"x": 1480, "y": 283, "width": 110},
+      {"x": 1710, "y": 373, "width": 110},
+      {"x": 1940, "y": 283, "width": 110},
+      {"x": 2170, "y": 283, "width": 200}
     ],
-    "badge_pos": {"x": 800, "y": 410}
+    "badge_pos": {"x": 2270, "y": 223}
   },
   "level_7": {
     "title": "Objectif CDI",
     "dialogue": "Prochaine étape : un CDI en développement back-end Python ou en data engineering. On en parle ?",
     "badge": "objectif",
-    "width": 1280,
+    "width": 2500,
     "platforms": [
-      {"x": 0, "y": 700, "width": 1024, "height": 68},
-      {"x": 200, "y": 600, "width": 100, "height": 20},
-      {"x": 400, "y": 500, "width": 100, "height": 20},
-      {"x": 600, "y": 400, "width": 100, "height": 20},
-      {"x": 800, "y": 300, "width": 150, "height": 20}
+      {"x": 300, "y": 553, "width": 140},
+      {"x": 560, "y": 463, "width": 120},
+      {"x": 800, "y": 373, "width": 120},
+      {"x": 1040, "y": 283, "width": 120},
+      {"x": 1300, "y": 373, "width": 120},
+      {"x": 1540, "y": 463, "width": 120},
+      {"x": 1780, "y": 373, "width": 120},
+      {"x": 2020, "y": 283, "width": 120},
+      {"x": 2260, "y": 283, "width": 220}
     ],
-    "badge_pos": {"x": 850, "y": 260}
+    "badge_pos": {"x": 2380, "y": 223}
   }
 }

@@ -8,7 +8,7 @@ from settings import (
     TEXT_COLOR,
     GROUND_Y,
 )
-from classes.platform import Platform
+from classes.ground import Ground
 from classes.player import Player
 from classes.dialogue_bubble import DialogueBubble
 from classes.level import LevelManager
@@ -22,13 +22,13 @@ pygame.display.set_caption(GAME_TITLE)
 clock = pygame.time.Clock()
 
 # Objets du jeu
-platform = Platform(y_pos=GROUND_Y)
+ground = Ground(GROUND_Y)
 player = Player(x=50, y=0)  
 levels = LevelManager("data/levels.json")
 bubble = DialogueBubble(screen, levels.levels, font_size=24, color=TEXT_COLOR)
 
 # Position de départ du joueur : les pieds sur le sol
-player.rect.bottom = GROUND_Y
+player.place(50, GROUND_Y)
 
 # Texte du jeu
 pygame.font.init()
@@ -59,10 +59,11 @@ while running:
 
     # ----- 2. LOGIQUE (coordonnées monde) -----
     keys = pygame.key.get_pressed()
-    player.update(keys, GROUND_Y)
+    player.update(keys, GROUND_Y, levels.platforms, levels.width)
 
-    # La caméra centre le joueur, sans jamais montrer x < 0
-    camera_x = max(0, player.rect.centerx - SCREEN_WIDTH // 2)
+    # La caméra centre le joueur, bornée entre le début et la fin du niveau
+    camera_x = player.rect.centerx - SCREEN_WIDTH // 2
+    camera_x = max(0, min(camera_x, levels.width - SCREEN_WIDTH))
 
     # Vérifier si le joueur atteint un badge
     for badge in levels.badges:
@@ -74,12 +75,10 @@ while running:
     # ----- 3. AFFICHAGE (coordonnées écran = monde - camera_x) -----
     screen.fill(PURPLE_BG)
 
-    # Sol infini : tuiles décalées selon la caméra, dessinées avant le joueur
-    tile = platform.tile_image
-    tile_width = tile.get_width()
-    offset = -(camera_x % tile_width)
-    for i in range(SCREEN_WIDTH // tile_width + 2):
-        screen.blit(tile, (offset + i * tile_width, platform.rect.y))
+    # Décor avant le joueur : sol infini puis plateformes du niveau
+    ground.draw(screen, camera_x)
+    for platform in levels.platforms:
+        platform.draw(screen, camera_x)
 
     player.draw(screen, camera_x)
     bubble.draw()

@@ -1,27 +1,34 @@
 import pygame as pg
-from settings import SCREEN_WIDTH
-from utils import load_image
+from settings import (
+    PLATFORM_HEIGHT,
+    PLATFORM_COLOR,
+    PLATFORM_EDGE_COLOR,
+    PLATFORM_EDGE_HEIGHT,
+    PLATFORM_TILE_WIDTH,
+)
 
-class Platform(pg.sprite.Sprite):
-    def __init__(self, y_pos):
-        super().__init__()
 
-        # Charge la tuile du sol
-        tile_image, tile_rect = load_image("objects/platform.png", scale=1)
-        # Tuile gardée seule pour dessiner un sol infini qui suit la caméra
-        self.tile_image = tile_image
+class Platform:
+    """Plateforme « traversable » de largeur variable, en coordonnées monde.
 
-        # Crée une surface de la largeur de l'écran
-        self.image = pg.Surface((SCREEN_WIDTH, tile_rect.height), pg.SRCALPHA)
+    On atterrit dessus en tombant, on la traverse en montant.
+    """
 
-        # Répète la tuile horizontalement
-        for x in range(0, SCREEN_WIDTH, tile_rect.width):
-            self.image.blit(tile_image, (x, 0))
+    def __init__(self, x, y, width):
+        self.rect = pg.Rect(x, y, width, PLATFORM_HEIGHT)
+        self.image = self._build_image(width)
 
-        # Position du sol sur l'écran
-        self.rect = self.image.get_rect(topleft=(0, y_pos))
+    @staticmethod
+    def _build_image(width):
+        image = pg.Surface((width, PLATFORM_HEIGHT))
+        image.fill(PLATFORM_COLOR)
+        # Séparations entre blocs, un peu plus sombres
+        dark = tuple(c // 2 for c in PLATFORM_COLOR)
+        for x in range(PLATFORM_TILE_WIDTH, width, PLATFORM_TILE_WIDTH):
+            pg.draw.line(image, dark, (x, 0), (x, PLATFORM_HEIGHT))
+        # Liseré néon sur le dessus
+        pg.draw.rect(image, PLATFORM_EDGE_COLOR, (0, 0, width, PLATFORM_EDGE_HEIGHT))
+        return image
 
-    def draw(self, surface):
-        surface.blit(self.image, self.rect)
-        
-  
+    def draw(self, surface, camera_x):
+        surface.blit(self.image, (self.rect.x - camera_x, self.rect.y))

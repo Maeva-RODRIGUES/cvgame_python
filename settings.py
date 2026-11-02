@@ -16,8 +16,10 @@ GOLD = (255, 217, 61)          # #FFD93D
 # Titre du jeu
 GAME_TITLE = "Hack Ton Job - CV Game"
 
-# Vitesse de base du joueur
+# Physique du joueur (en pixels par frame)
 PLAYER_SPEED = 5
+PLAYER_JUMP_STRENGTH = 13   # vitesse verticale au moment du saut
+GRAVITY = 0.6               # hauteur max d'un saut = v² / (2 × g) ≈ 141 px
 
 # Taux de rafraîchissement (FPS)
 FPS = 60
@@ -46,6 +48,12 @@ BADGE_TYPES = [
 PLAYER_SIZE = (64, 110)  # garde le ratio du sprite recadré (523 x 900)
 BADGE_SIZE = (32, 32)
 PLATFORM_HEIGHT = 20
+
+# Style des plateformes (maquette : bloc coloré, liseré néon sur le dessus)
+PLATFORM_COLOR = (88, 40, 190)
+PLATFORM_EDGE_COLOR = NEON_BLUE
+PLATFORM_EDGE_HEIGHT = 4
+PLATFORM_TILE_WIDTH = 40
 
 # Chemins des assets
 ASSETS_PATH = "assets/"

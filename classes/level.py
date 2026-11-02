@@ -10,14 +10,18 @@ class LevelManager:
         self.current_level = "level_1"
         self.platforms = []
         self.badges = []
+        self.width = 0
         self.load_level()
 
     def load_level(self):
         """Charge les données du niveau actuel"""
         data = self.levels.get(self.current_level, {})
 
+        # Largeur du niveau en pixels (bornes de la caméra et du joueur)
+        self.width = data["width"]
+
         # Charger les plateformes
-        self.platforms = [Platform(y_pos=p["y"]) for p in data.get("platforms", [])]
+        self.platforms = [Platform(p["x"], p["y"], p["width"]) for p in data.get("platforms", [])]
 
         # Badge du niveau : type + position (un seul par niveau)
         badge_pos = data.get("badge_pos")
