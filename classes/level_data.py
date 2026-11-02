@@ -4,6 +4,7 @@ Chaque niveau est converti en dataclasses typées. Si le fichier est mal formé
 (champ manquant, mauvais type, badge inconnu...), une LevelDataError indique
 le niveau et le champ concernés au lieu d'un plantage plus loin dans le jeu.
 """
+
 import json
 from dataclasses import dataclass
 
@@ -40,7 +41,7 @@ class LevelData:
 def load_levels(path):
     """Lit le JSON et renvoie {"level_1": LevelData, ...}, ou lève LevelDataError."""
     try:
-        with open(path, "r", encoding="utf-8") as f:
+        with open(path, encoding="utf-8") as f:
             raw = json.load(f)
     except json.JSONDecodeError as e:
         raise LevelDataError(f"JSON invalide ({e})") from e
@@ -52,7 +53,9 @@ def load_levels(path):
     # Les niveaux s'enchaînent par numéro (level_1, level_2...) : pas de trou permis
     expected = [f"level_{n}" for n in range(1, len(raw) + 1)]
     if sorted(raw, key=_level_number) != expected:
-        raise LevelDataError(f"noms de niveaux attendus : {', '.join(expected)} (trouvés : {', '.join(raw)})")
+        raise LevelDataError(
+            f"noms de niveaux attendus : {', '.join(expected)} (trouvés : {', '.join(raw)})"
+        )
 
     return {name: _parse_level(data, name) for name, data in raw.items()}
 
@@ -116,6 +119,4 @@ TYPE_NAMES = {str: "texte", int: "nombre entier", list: "liste", dict: "objet"}
 def _check_type(value, expected_type, where):
     # bool est une sous-classe de int en Python : true/false ne doivent pas passer pour des nombres
     if not isinstance(value, expected_type) or (expected_type is int and isinstance(value, bool)):
-        raise LevelDataError(
-            f"{where} : {TYPE_NAMES[expected_type]} attendu, reçu {value!r}"
-        )
+        raise LevelDataError(f"{where} : {TYPE_NAMES[expected_type]} attendu, reçu {value!r}")

@@ -1,11 +1,12 @@
 import pygame
+
 from settings import (
-    BUBBLE_SOUND,
-    BUBBLE_POS,
-    BUBBLE_FRAME,
-    BUBBLE_PADDING,
-    BUBBLE_LINE_HEIGHT,
     BUBBLE_CHAR_DELAY_MS,
+    BUBBLE_FRAME,
+    BUBBLE_LINE_HEIGHT,
+    BUBBLE_PADDING,
+    BUBBLE_POS,
+    BUBBLE_SOUND,
     DARK_PURPLE,
     GOLD,
 )

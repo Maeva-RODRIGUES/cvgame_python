@@ -1,9 +1,10 @@
 import pygame as pg
+
 from settings import (
-    PLATFORM_HEIGHT,
     PLATFORM_COLOR,
     PLATFORM_EDGE_COLOR,
     PLATFORM_EDGE_HEIGHT,
+    PLATFORM_HEIGHT,
     PLATFORM_TILE_WIDTH,
 )
 

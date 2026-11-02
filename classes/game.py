@@ -1,41 +1,41 @@
 from enum import Enum, auto
 
 import pygame
+
+from classes.dialogue_bubble import DialogueBubble
+from classes.end_screen import EndScreen
+from classes.ground import Ground
+from classes.hud import Hud
+from classes.level import LevelManager
+from classes.player import Player
+from classes.sign import Sign
 from settings import (
-    SCREEN_WIDTH,
-    SCREEN_HEIGHT,
-    PURPLE_BG,
-    FPS,
-    GAME_TITLE,
-    GAME_SUBTITLE,
-    TEXT_COLOR,
-    GOLD,
-    WHITE,
+    BADGE_SOUND,
     DARK_PURPLE,
+    END_SCREEN_PATH,
+    END_SOUND,
+    FPS,
+    GAME_SUBTITLE,
+    GAME_TITLE,
+    GOLD,
+    GROUND_Y,
+    LEVELS_PATH,
     NEON_BLUE,
     NEON_PINK,
-    GROUND_Y,
     PLAYER_START_X,
+    PURPLE_BG,
+    SCREEN_HEIGHT,
+    SCREEN_WIDTH,
     SIGN_X,
-    BADGE_SOUND,
-    END_SOUND,
-    LEVELS_PATH,
-    END_SCREEN_PATH,
+    TEXT_COLOR,
+    WHITE,
 )
-from classes.ground import Ground
-from classes.sign import Sign
-from classes.player import Player
-from classes.dialogue_bubble import DialogueBubble
-from classes.level import LevelManager
-from classes.hud import Hud
-from classes.end_screen import EndScreen
-
 
 
 class State(Enum):
-    TITLE = auto()    # écran titre
+    TITLE = auto()  # écran titre
     PLAYING = auto()  # partie en cours
-    END = auto()      # partie terminée
+    END = auto()  # partie terminée
 
 
 class Game:
@@ -70,7 +70,9 @@ class Game:
     def new_game(self):
         """Prépare une partie depuis le niveau 1 (aussi utilisé pour rejouer)."""
         self.levels = LevelManager(LEVELS_PATH)
-        self.bubble = DialogueBubble(self.screen, self.levels.levels, font_size=24, color=TEXT_COLOR)
+        self.bubble = DialogueBubble(
+            self.screen, self.levels.levels, font_size=24, color=TEXT_COLOR
+        )
         self.bubble.set_level(self.levels.current_level)
         self.player.place(PLAYER_START_X, GROUND_Y)
         self.camera_x = 0
@@ -253,8 +255,9 @@ class Game:
         self.player.draw(self.screen, cam)
         self.bubble.draw()
         self._draw_centered(self.title_text, 40)
-        self.hud.draw(self.screen, self.levels.number, self.levels.count,
-                      self.levels.title, self.collected)
+        self.hud.draw(
+            self.screen, self.levels.number, self.levels.count, self.levels.title, self.collected
+        )
 
     def _draw_end(self):
         self.end_screen.draw(self.screen, self.collected)

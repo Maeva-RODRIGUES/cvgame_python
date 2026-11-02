@@ -1,7 +1,8 @@
 import json
 
 import pygame
-from settings import SCREEN_WIDTH, BADGE_TYPES, TEXT_COLOR, GOLD, NEON_BLUE
+
+from settings import BADGE_TYPES, GOLD, NEON_BLUE, SCREEN_WIDTH, TEXT_COLOR
 from utils import wrap_text
 
 SKILL_ICON_SIZE = 48
@@ -15,7 +16,7 @@ class EndScreen:
     """Écran de fin : compétences ramassées, réalisations, formations, contact."""
 
     def __init__(self, content_path, badge_sprites):
-        with open(content_path, "r", encoding="utf-8") as f:
+        with open(content_path, encoding="utf-8") as f:
             self.content = json.load(f)
         self.icons = {
             badge_type: pygame.transform.scale(sprite, (SKILL_ICON_SIZE, SKILL_ICON_SIZE))
@@ -44,7 +45,9 @@ class EndScreen:
 
         # Colonne droite : formations, contact, disponibilité
         y = self._section(screen, c["education_title"], c["education"], RIGHT_X, 235, RIGHT_WIDTH)
-        y = self._section(screen, c["contact_title"], c["contact"], RIGHT_X, y + 16, RIGHT_WIDTH, bullets=False)
+        y = self._section(
+            screen, c["contact_title"], c["contact"], RIGHT_X, y + 16, RIGHT_WIDTH, bullets=False
+        )
         screen.blit(self.heading_font.render(c["availability"], True, GOLD), (RIGHT_X, y + 16))
 
         # Commandes, qui clignotent

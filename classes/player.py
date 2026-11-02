@@ -1,5 +1,6 @@
 import pygame as pg
-from settings import PLAYER_SPEED, PLAYER_SIZE, PLAYER_JUMP_STRENGTH, GRAVITY
+
+from settings import GRAVITY, PLAYER_JUMP_STRENGTH, PLAYER_SIZE, PLAYER_SPEED
 from utils import load_image
 
 
@@ -62,8 +63,7 @@ class Player(pg.sprite.Sprite):
             for platform in platforms:
                 top = platform.rect.top
                 overlaps_x = (
-                    self.rect.right > platform.rect.left
-                    and self.rect.left < platform.rect.right
+                    self.rect.right > platform.rect.left and self.rect.left < platform.rect.right
                 )
                 if overlaps_x and old_bottom <= top <= self.rect.bottom:
                     self._land(top)

@@ -1,0 +1,20 @@
+[project]
+name = "cvgame"
+version = "0.1.0"
+description = "Hack Ton Job - CV Game : un jeu de plateforme Pygame qui raconte un parcours de développeuse en reconversion."
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{ name = "Maëva Rodrigues" }]
+dependencies = ["pygame>=2.5"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+# E/W : style PEP 8, F : erreurs (imports inutilisés...), I : ordre des imports,
+# B : bugs courants, UP : syntaxe Python moderne
+select = ["E", "W", "F", "I", "B", "UP"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

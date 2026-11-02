@@ -16,10 +16,10 @@ PURPLE_BG = (43, 14, 63)  ##2B0E3F
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 TEXT_COLOR = (245, 235, 255)
-DARK_PURPLE = (30, 0, 56)      # #1E0038
-NEON_PINK = (255, 31, 143)     # #FF1F8F
-NEON_BLUE = (0, 245, 255)      # #00F5FF
-GOLD = (255, 217, 61)          # #FFD93D
+DARK_PURPLE = (30, 0, 56)  # #1E0038
+NEON_PINK = (255, 31, 143)  # #FF1F8F
+NEON_BLUE = (0, 245, 255)  # #00F5FF
+GOLD = (255, 217, 61)  # #FFD93D
 
 
 # Titre du jeu
@@ -32,15 +32,15 @@ SIGN_X = 130
 SIGN_HEIGHT = 90
 
 # Sons
-BADGE_SOUND = ASSETS_DIR / "sounds" / "badge.wav"   # ramassage d'un badge
-BUBBLE_SOUND = ASSETS_DIR / "sounds" / "pop.wav"    # ouverture de la bulle
+BADGE_SOUND = ASSETS_DIR / "sounds" / "badge.wav"  # ramassage d'un badge
+BUBBLE_SOUND = ASSETS_DIR / "sounds" / "pop.wav"  # ouverture de la bulle
 # Joué une fois à l'arrivée sur l'écran de fin (Pixabay, Content License)
 END_SOUND = ASSETS_DIR / "sounds" / "item-collected-1-367087.mp3"
 
 # Physique du joueur (en pixels par frame)
 PLAYER_SPEED = 5
-PLAYER_JUMP_STRENGTH = 13   # vitesse verticale au moment du saut
-GRAVITY = 0.6               # hauteur max d'un saut = v² / (2 × g) ≈ 141 px
+PLAYER_JUMP_STRENGTH = 13  # vitesse verticale au moment du saut
+GRAVITY = 0.6  # hauteur max d'un saut = v² / (2 × g) ≈ 141 px
 
 # Taux de rafraîchissement (FPS)
 FPS = 60
@@ -53,22 +53,14 @@ GROUND_HEIGHT = 77
 GROUND_Y = SCREEN_HEIGHT - GROUND_HEIGHT
 
 # Bulle de dialogue (bubble.png recadrée : 452 x 312, queue comprise)
-BUBBLE_POS = (30, 70)                  # coin haut gauche à l'écran, sous le titre
-BUBBLE_FRAME = (6, 6, 440, 228)        # intérieur du cadre, relatif à l'image recadrée
+BUBBLE_POS = (30, 70)  # coin haut gauche à l'écran, sous le titre
+BUBBLE_FRAME = (6, 6, 440, 228)  # intérieur du cadre, relatif à l'image recadrée
 BUBBLE_PADDING = 16
 BUBBLE_LINE_HEIGHT = 28
-BUBBLE_CHAR_DELAY_MS = 40              # vitesse de la machine à écrire
+BUBBLE_CHAR_DELAY_MS = 40  # vitesse de la machine à écrire
 
 # Types de badges
-BADGE_TYPES = [
-    "rh",
-    "reconversion",
-    "web",
-    "backend",
-    "fullstack",
-    "data",
-    "objectif"
-]
+BADGE_TYPES = ["rh", "reconversion", "web", "backend", "fullstack", "data", "objectif"]
 
 # Dernier badge : remplacé par le drapeau final
 FINAL_BADGE = "objectif"

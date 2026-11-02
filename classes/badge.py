@@ -2,7 +2,18 @@ import math
 import random
 
 import pygame
-from settings import ASSETS_DIR, BADGE_SIZE, BADGES_PATH, FLAG_HEIGHT, NEON_PINK, NEON_BLUE, GOLD, WHITE, BLACK
+
+from settings import (
+    ASSETS_DIR,
+    BADGE_SIZE,
+    BADGES_PATH,
+    BLACK,
+    FLAG_HEIGHT,
+    GOLD,
+    NEON_BLUE,
+    NEON_PINK,
+    WHITE,
+)
 from utils import load_image
 
 # Sprite de secours : couleur et lettres par type de badge
@@ -10,10 +21,10 @@ FALLBACK_COLORS = {
     "rh": NEON_PINK,
     "reconversion": NEON_BLUE,
     "web": GOLD,
-    "backend": (128, 255, 128),    # Vert clair
-    "fullstack": (255, 128, 0),    # Orange
-    "data": (128, 0, 255),         # Violet
-    "objectif": (255, 255, 128),   # Jaune clair
+    "backend": (128, 255, 128),  # Vert clair
+    "fullstack": (255, 128, 0),  # Orange
+    "data": (128, 0, 255),  # Violet
+    "objectif": (255, 255, 128),  # Jaune clair
 }
 FALLBACK_LETTERS = {
     "rh": "RH",
@@ -57,8 +68,10 @@ class Badge:
         center = (BADGE_SIZE[0] // 2, BADGE_SIZE[1] // 2)
         radius = min(BADGE_SIZE) // 2 - 2
         points = [
-            (center[0] + radius * math.cos(i * math.pi / 3),
-             center[1] + radius * math.sin(i * math.pi / 3))
+            (
+                center[0] + radius * math.cos(i * math.pi / 3),
+                center[1] + radius * math.sin(i * math.pi / 3),
+            )
             for i in range(6)
         ]
         pygame.draw.polygon(sprite, FALLBACK_COLORS.get(self.badge_type, WHITE), points)
@@ -102,7 +115,8 @@ class Badge:
         for _ in range(3):
             size = random.randint(1, 3)
             pygame.draw.rect(
-                screen, GOLD,
+                screen,
+                GOLD,
                 (cx + random.randint(-20, 20), cy + random.randint(-20, 20), size, size),
             )
 

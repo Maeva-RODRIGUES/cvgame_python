@@ -1,7 +1,8 @@
+from classes.badge import Badge, FinalFlag
 from classes.level_data import load_levels
 from classes.platform import Platform
-from classes.badge import Badge, FinalFlag
 from settings import BADGE_SIZE, FINAL_BADGE
+
 
 class LevelManager:
     def __init__(self, json_path):
@@ -47,7 +48,11 @@ class LevelManager:
     def _final_flag(self, badge_pos, badge_type):
         """Drapeau planté sur la plateforme située sous la position du badge."""
         x = badge_pos.x + BADGE_SIZE[0] // 2
-        below = [p for p in self.platforms if p.rect.left <= x < p.rect.right and p.rect.top > badge_pos.y]
+        below = [
+            p
+            for p in self.platforms
+            if p.rect.left <= x < p.rect.right and p.rect.top > badge_pos.y
+        ]
         top = min(below, key=lambda p: p.rect.top).rect.top
         return FinalFlag((x, top), badge_type)
 

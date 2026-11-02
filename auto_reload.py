@@ -1,11 +1,13 @@
-import sys
-from watchdog.observers import Observer
-from watchdog.events import FileSystemEventHandler
 import subprocess
+import sys
 import time
 from pathlib import Path
 
+from watchdog.events import FileSystemEventHandler
+from watchdog.observers import Observer
+
 BASE_DIR = Path(__file__).resolve().parent
+
 
 class ReloadHandler(FileSystemEventHandler):
     def __init__(self):
@@ -16,12 +18,17 @@ class ReloadHandler(FileSystemEventHandler):
         if self.process:
             self.process.kill()
         print("🚀 (Re)lancement de main.py")
-        self.process = subprocess.Popen([sys.executable, str(BASE_DIR / "main.py")], creationflags=subprocess.CREATE_NEW_PROCESS_GROUP)
+        # CREATE_NEW_PROCESS_GROUP n'existe que sous Windows : ailleurs, aucune option
+        flags = subprocess.CREATE_NEW_PROCESS_GROUP if sys.platform == "win32" else 0
+        self.process = subprocess.Popen(
+            [sys.executable, str(BASE_DIR / "main.py")], creationflags=flags
+        )
 
     def on_modified(self, event):
         if event.src_path.endswith(".py") and not event.src_path.endswith("auto_reload.py"):
             print(f"🔁 Modification détectée dans {event.src_path}, rechargement...")
             self.start_process()
+
 
 if __name__ == "__main__":
     path = str(BASE_DIR)

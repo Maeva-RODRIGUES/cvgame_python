@@ -1,6 +1,7 @@
 import pygame
-from settings import SCREEN_WIDTH, BADGE_TYPES, BADGE_SIZE, TEXT_COLOR, GOLD, NEON_BLUE
+
 from classes.badge import Badge
+from settings import BADGE_SIZE, BADGE_TYPES, GOLD, NEON_BLUE, SCREEN_WIDTH, TEXT_COLOR
 
 HUD_MARGIN = 16
 BADGE_GAP = 6

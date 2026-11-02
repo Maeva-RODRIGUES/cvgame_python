@@ -4,6 +4,7 @@ Usage (depuis la racine du projet) :
     python tools/make_badges.py                    # écrit assets/badges/badge_<type>.png
     python tools/make_badges.py --preview out.png  # + planche d'aperçu agrandie
 """
+
 import argparse
 from pathlib import Path
 
