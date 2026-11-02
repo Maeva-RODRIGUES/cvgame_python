@@ -18,3 +18,5 @@ select = ["E", "W", "F", "I", "B", "UP"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+# Les tests importent settings, classes... depuis la racine du projet
+pythonpath = ["."]
