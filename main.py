@@ -25,10 +25,11 @@ clock = pygame.time.Clock()
 platform = Platform(y_pos=380) 
 player = Player(x=50, y=0)  
 levels = LevelManager("data/levels.json")
-bubble = DialogueBubble(screen, "data/dialogues.json", font_size=24, color=TEXT_COLOR)
+bubble = DialogueBubble(screen, levels.levels, font_size=24, color=TEXT_COLOR)
 
-# Ajuste la position Y du joueur APRÈS création
-player.rect.bottom = platform.rect.top + PLAYER_OFFSET_Y
+# Niveau du sol (coordonnée monde Y) et position de départ du joueur
+ground_y = platform.rect.top + PLAYER_OFFSET_Y
+player.rect.bottom = ground_y
 
 # Texte du jeu
 pygame.font.init()
@@ -36,8 +37,8 @@ font = pygame.font.Font(None, 48)
 title_text = font.render("AIDE MAËVA À MONTER EN COMPÉTENCES", True, TEXT_COLOR)
 title_rect = title_text.get_rect(center=(SCREEN_WIDTH // 2, 40))  
 
-# Scroll
-scroll_x = 0
+# Caméra : décalage horizontal entre le monde et l'écran
+camera_x = 0
 
 # On initialise le premier dialogue
 bubble.set_level(levels.current_level)
@@ -45,50 +46,44 @@ bubble.set_level(levels.current_level)
 # Boucle principale
 running = True
 while running:
-    # Gestion des événements
+    # ----- 1. ÉVÉNEMENTS -----
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
-            
-    # Gestion machine à écrire + toggle
+
+        # Espace : afficher la bulle, accélérer le texte ou la fermer
         if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
-            # Si la bulle est cachée → on l'affiche
-                if not bubble.visible:
-                    bubble.toggle()
-                else:
-                # Si la bulle est visible → soit on skip le texte, soit on la ferme
-                    bubble.skip_or_hide()
+            if not bubble.visible:
+                bubble.toggle()
+            else:
+                bubble.skip_or_hide()
 
-
-    # ----- LOGIQUE DU JEU -----
+    # ----- 2. LOGIQUE (coordonnées monde) -----
     keys = pygame.key.get_pressed()
-    
-    # Effet parallaxe : on décale le sol au lieu de déplacer l'écran
-    if keys[pygame.K_LEFT]:
-        scroll_x += player.speed  
-    elif keys[pygame.K_RIGHT]:
-        scroll_x -= player.speed  
-        
+    player.update(keys, ground_y)
+
+    # La caméra centre le joueur, sans jamais montrer x < 0
+    camera_x = max(0, player.rect.centerx - SCREEN_WIDTH // 2)
+
     # Vérifier si le joueur atteint un badge
     for badge in levels.badges:
         if player.rect.colliderect(pygame.Rect(badge["x"], badge["y"], 50, 50)):
-            levels.next_level()                               
-            bubble.set_level(levels.current_level)             
-            bubble.toggle()                        
-            
-    # ----- AFFICHAGE -----
-    screen.fill(PURPLE_BG)          # fond
-    platform.draw(screen)           # sol
-    player.draw(screen)             # personnage
-    bubble.draw()                   # bulle de dialogue
-    
-    # Dessiner le sol avec répétition pour l'effet infini 
-    platform_width = platform.image.get_width()
-    for i in range(-1, SCREEN_WIDTH // platform_width + 2):
-        x_pos = i * platform_width + (scroll_x % platform_width)
-        screen.blit(platform.image, (x_pos, platform.rect.y))
-    
-     # Texte
+            levels.next_level()
+            bubble.set_level(levels.current_level)
+            bubble.toggle()
+
+    # ----- 3. AFFICHAGE (coordonnées écran = monde - camera_x) -----
+    screen.fill(PURPLE_BG)
+
+    # Sol infini : tuiles décalées selon la caméra, dessinées avant le joueur
+    tile = platform.tile_image
+    tile_width = tile.get_width()
+    offset = -(camera_x % tile_width)
+    for i in range(SCREEN_WIDTH // tile_width + 2):
+        screen.blit(tile, (offset + i * tile_width, platform.rect.y))
+
+    player.draw(screen, camera_x)
+    bubble.draw()
     screen.blit(title_text, title_rect)
 
     pygame.display.flip()

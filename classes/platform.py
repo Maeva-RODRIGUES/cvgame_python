@@ -8,6 +8,8 @@ class Platform(pg.sprite.Sprite):
 
         # Charge la tuile du sol
         tile_image, tile_rect = load_image("objects/platform.png", scale=1)
+        # Tuile gardée seule pour dessiner un sol infini qui suit la caméra
+        self.tile_image = tile_image
 
         # Crée une surface de la largeur de l'écran
         self.image = pg.Surface((SCREEN_WIDTH, tile_rect.height), pg.SRCALPHA)

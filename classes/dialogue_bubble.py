@@ -1,16 +1,14 @@
 import pygame
-import json
 from settings import BUBBLE_OFFSET_Y
 
 class DialogueBubble:
-    def __init__(self, screen, json_path, font_size=14, color=(255, 255, 255)):
+    def __init__(self, screen, levels, font_size=14, color=(255, 255, 255)):
         self.screen = screen
         self.font = pygame.font.Font(None, font_size)
         self.color = color
         
-        # Charger le JSON des dialogues
-        with open(json_path, "r", encoding="utf-8") as f:
-            self.dialogues = json.load(f)
+        # Données des niveaux (déjà chargées par LevelManager depuis levels.json)
+        self.levels = levels
             
          # Charger l'image de la bulle avec transparence
         self.bubble_image = pygame.image.load("assets/objects/bubble.png").convert_alpha() 
@@ -39,7 +37,7 @@ class DialogueBubble:
     
     def _load_dialogue(self):
         """Charge le dialogue et le titre du niveau courant"""
-        data = self.dialogues.get(self.current_level, {})
+        data = self.levels.get(self.current_level, {})
         self.title = data.get("title", "")
         dialogue_text = data.get("dialogue", "")
         self.text = self._split_text(dialogue_text)

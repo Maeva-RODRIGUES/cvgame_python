@@ -3,6 +3,7 @@ from classes.platform import Platform
 
 class LevelManager:
     def __init__(self, json_path):
+        # data/levels.json : source unique (titre, dialogue, badge, plateformes...)
         with open(json_path, "r", encoding="utf-8") as f:
             self.levels = json.load(f)
 
@@ -18,8 +19,11 @@ class LevelManager:
         # Charger les plateformes
         self.platforms = [Platform(y_pos=p["y"]) for p in data.get("platforms", [])]
 
-        # Charger les badges
-        self.badges = data.get("badges", [])
+        # Badge du niveau : type + position (un seul par niveau)
+        badge_pos = data.get("badge_pos")
+        self.badges = []
+        if badge_pos:
+            self.badges = [{"x": badge_pos["x"], "y": badge_pos["y"], "type": data["badge"]}]
 
     def next_level(self):
         """Passe au niveau suivant"""

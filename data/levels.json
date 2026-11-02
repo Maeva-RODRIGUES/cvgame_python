@@ -1,18 +1,22 @@
 {
   "level_1": {
     "title": "RH Origins",
+    "dialogue": "2010-2023 : 13 ans dans les RH. Recruter, accompagner, faire grandir les équipes... jusqu'à ce que la tech m'attrape !",
+    "badge": "rh",
+    "width": 1280,
     "platforms": [
       {"x": 0, "y": 700, "width": 1024, "height": 68},
       {"x": 200, "y": 600, "width": 150, "height": 20},
       {"x": 400, "y": 500, "width": 150, "height": 20},
       {"x": 600, "y": 400, "width": 150, "height": 20}
     ],
-    "badges": [
-      {"x": 650, "y": 360, "type": "rh"}
-    ]
+    "badge_pos": {"x": 650, "y": 360}
   },
   "level_2": {
-    "title": "Déclic",
+    "title": "Le déclic",
+    "dialogue": "2023 : je choisis de me reconvertir dans le développement. Nouveau métier, même envie d'apprendre.",
+    "badge": "reconversion",
+    "width": 1280,
     "platforms": [
       {"x": 0, "y": 700, "width": 1024, "height": 68},
       {"x": 150, "y": 550, "width": 100, "height": 20},
@@ -20,12 +24,13 @@
       {"x": 550, "y": 350, "width": 100, "height": 20},
       {"x": 750, "y": 450, "width": 100, "height": 20}
     ],
-    "badges": [
-      {"x": 775, "y": 410, "type": "reconversion"}
-    ]
+    "badge_pos": {"x": 775, "y": 410}
   },
   "level_3": {
-    "title": "Bootcamp",
+    "title": "La Piscine",
+    "dialogue": "2024 : formation Développeur Web et Web Mobile. HTML, CSS, JavaScript, React, Node.js : mes premières applis !",
+    "badge": "web",
+    "width": 1280,
     "platforms": [
       {"x": 0, "y": 700, "width": 1024, "height": 68},
       {"x": 100, "y": 600, "width": 80, "height": 20},
@@ -35,24 +40,26 @@
       {"x": 700, "y": 280, "width": 80, "height": 20},
       {"x": 850, "y": 400, "width": 120, "height": 20}
     ],
-    "badges": [
-      {"x": 875, "y": 360, "type": "web"}
-    ]
+    "badge_pos": {"x": 875, "y": 360}
   },
   "level_4": {
-    "title": "Alternance CGI",
+    "title": "CGI - Back-end",
+    "dialogue": "Novembre 2024 : alternance chez CGI avec la Wild Code School. Développement back-end ABAP sur SAP, dans l'aéronautique.",
+    "badge": "abap",
+    "width": 1280,
     "platforms": [
       {"x": 0, "y": 700, "width": 1024, "height": 68},
       {"x": 200, "y": 580, "width": 120, "height": 20},
       {"x": 450, "y": 480, "width": 120, "height": 20},
       {"x": 700, "y": 380, "width": 120, "height": 20}
     ],
-    "badges": [
-      {"x": 730, "y": 340, "type": "abap"}
-    ]
+    "badge_pos": {"x": 730, "y": 340}
   },
   "level_5": {
-    "title": "Projets Persos",
+    "title": "CGI - Fullstack",
+    "dialogue": "Septembre 2025 : je passe fullstack chez CGI. React.js, Node.js et API REST. Et le titre Concepteur Développeur d'Applications (bac+3) en poche !",
+    "badge": "fullstack",
+    "width": 1280,
     "platforms": [
       {"x": 0, "y": 700, "width": 1024, "height": 68},
       {"x": 100, "y": 600, "width": 100, "height": 20},
@@ -61,12 +68,13 @@
       {"x": 700, "y": 300, "width": 100, "height": 20},
       {"x": 850, "y": 500, "width": 150, "height": 20}
     ],
-    "badges": [
-      {"x": 900, "y": 460, "type": "opensource"}
-    ]
+    "badge_pos": {"x": 900, "y": 460}
   },
   "level_6": {
-    "title": "Spécialisation Python/IA",
+    "title": "Skeepers - Data",
+    "dialogue": "Janvier 2026 : data engineer chez Skeepers. Pipelines Python, PySpark et Scala, Kafka, Temporal, jusqu'à 300 milliards de lignes !",
+    "badge": "data",
+    "width": 1280,
     "platforms": [
       {"x": 0, "y": 700, "width": 1024, "height": 68},
       {"x": 150, "y": 550, "width": 120, "height": 20},
@@ -74,12 +82,13 @@
       {"x": 550, "y": 300, "width": 120, "height": 20},
       {"x": 750, "y": 450, "width": 150, "height": 20}
     ],
-    "badges": [
-      {"x": 800, "y": 410, "type": "ia"}
-    ]
+    "badge_pos": {"x": 800, "y": 410}
   },
   "level_7": {
-    "title": "Objectif Alternance",
+    "title": "Objectif CDI",
+    "dialogue": "Prochaine étape : un CDI en développement back-end Python ou en data engineering. On en parle ?",
+    "badge": "objectif",
+    "width": 1280,
     "platforms": [
       {"x": 0, "y": 700, "width": 1024, "height": 68},
       {"x": 200, "y": 600, "width": 100, "height": 20},
@@ -87,8 +96,6 @@
       {"x": 600, "y": 400, "width": 100, "height": 20},
       {"x": 800, "y": 300, "width": 150, "height": 20}
     ],
-    "badges": [
-      {"x": 850, "y": 260, "type": "objectif"}
-    ]
+    "badge_pos": {"x": 850, "y": 260}
   }
 }

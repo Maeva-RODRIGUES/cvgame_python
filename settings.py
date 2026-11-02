@@ -33,11 +33,11 @@ BUBBLE_OFFSET_Y = 220
 # Types de badges
 BADGE_TYPES = [
     "rh",
-    "reconversion", 
+    "reconversion",
     "web",
     "abap",
-    "opensource",
-    "ia",
+    "fullstack",
+    "data",
     "objectif"
 ]
 
