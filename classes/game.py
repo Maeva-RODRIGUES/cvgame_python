@@ -19,6 +19,7 @@ from settings import (
     PLAYER_START_X,
     SIGN_X,
     BADGE_SOUND,
+    END_SOUND,
 )
 from classes.ground import Ground
 from classes.sign import Sign
@@ -54,6 +55,7 @@ class Game:
         self.text_font = pygame.font.Font(None, 32)
         self.title_text = self.title_font.render(GAME_SUBTITLE, True, TEXT_COLOR)
         self.badge_sound = pygame.mixer.Sound(os.path.join(DATA_DIR, BADGE_SOUND))
+        self.end_sound = pygame.mixer.Sound(os.path.join(DATA_DIR, END_SOUND))
 
         self.ground = Ground(GROUND_Y)
         self.sign = Sign(SIGN_X, GROUND_Y)
@@ -86,6 +88,7 @@ class Game:
             self.camera_x = 0
         else:
             self.state = State.END
+            self.end_sound.play()
 
     # ----- Boucle principale -----
 
@@ -121,6 +124,7 @@ class Game:
         if event.type != pygame.KEYDOWN:
             return
         if event.key == pygame.K_SPACE:  # rejouer
+            self.end_sound.stop()  # coupe le son de fin s'il joue encore
             self.new_game()
             self.state = State.PLAYING
         elif event.key == pygame.K_ESCAPE:  # quitter

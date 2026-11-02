@@ -24,6 +24,8 @@ SIGN_HEIGHT = 90
 
 # Son joué au ramassage d'un badge (relatif à assets/)
 BADGE_SOUND = "sounds/badge.wav"
+# Son joué une fois à l'arrivée sur l'écran de fin (Pixabay, Content License)
+END_SOUND = "sounds/item-collected-1-367087.mp3"
 
 # Physique du joueur (en pixels par frame)
 PLAYER_SPEED = 5
