@@ -1,7 +1,6 @@
-import os
-
 import pygame
 from settings import (
+    BUBBLE_SOUND,
     BUBBLE_POS,
     BUBBLE_FRAME,
     BUBBLE_PADDING,
@@ -10,7 +9,7 @@ from settings import (
     DARK_PURPLE,
     GOLD,
 )
-from utils import DATA_DIR, load_image, wrap_text
+from utils import load_image, wrap_text
 
 HINT_TEXT = "Espace pour continuer"
 
@@ -30,7 +29,7 @@ class DialogueBubble:
         # Zone où le texte doit tenir : intérieur du cadre moins la marge
         self.text_area = frame.move(BUBBLE_POS).inflate(-2 * BUBBLE_PADDING, -2 * BUBBLE_PADDING)
 
-        self.bubble_sound = pygame.mixer.Sound(os.path.join(DATA_DIR, "sounds/pop.wav"))
+        self.bubble_sound = pygame.mixer.Sound(BUBBLE_SOUND)
 
         self.current_level = "level_1"
         self.title = ""

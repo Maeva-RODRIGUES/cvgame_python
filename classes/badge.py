@@ -1,10 +1,9 @@
 import math
-import os
 import random
 
 import pygame
-from settings import BADGE_SIZE, BADGES_PATH, FLAG_HEIGHT, NEON_PINK, NEON_BLUE, GOLD, WHITE, BLACK
-from utils import DATA_DIR, load_image
+from settings import ASSETS_DIR, BADGE_SIZE, BADGES_PATH, FLAG_HEIGHT, NEON_PINK, NEON_BLUE, GOLD, WHITE, BLACK
+from utils import load_image
 
 # Sprite de secours : couleur et lettres par type de badge
 FALLBACK_COLORS = {
@@ -46,7 +45,7 @@ class Badge:
     def load_sprite(self):
         """Charge assets/badges/badge_<type>.png, ou un sprite de secours s'il n'existe pas."""
         filename = BADGES_PATH + f"badge_{self.badge_type}.png"
-        if not os.path.exists(os.path.join(DATA_DIR, filename)):
+        if not (ASSETS_DIR / filename).exists():
             return self.create_fallback_sprite()
         image, _ = load_image(filename, size=BADGE_SIZE)
         return image.convert_alpha()

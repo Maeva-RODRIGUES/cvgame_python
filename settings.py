@@ -1,3 +1,12 @@
+from pathlib import Path
+
+# Chemins absolus calculés depuis ce fichier : le jeu se lance depuis n'importe quel dossier
+BASE_DIR = Path(__file__).resolve().parent
+ASSETS_DIR = BASE_DIR / "assets"
+DATA_DIR = BASE_DIR / "data"
+LEVELS_PATH = DATA_DIR / "levels.json"
+END_SCREEN_PATH = DATA_DIR / "end_screen.json"
+
 # Dimensions fenêtre
 SCREEN_WIDTH = 1280
 SCREEN_HEIGHT = 720
@@ -22,10 +31,11 @@ PLAYER_START_X = 50
 SIGN_X = 130
 SIGN_HEIGHT = 90
 
-# Son joué au ramassage d'un badge (relatif à assets/)
-BADGE_SOUND = "sounds/badge.wav"
-# Son joué une fois à l'arrivée sur l'écran de fin (Pixabay, Content License)
-END_SOUND = "sounds/item-collected-1-367087.mp3"
+# Sons
+BADGE_SOUND = ASSETS_DIR / "sounds" / "badge.wav"   # ramassage d'un badge
+BUBBLE_SOUND = ASSETS_DIR / "sounds" / "pop.wav"    # ouverture de la bulle
+# Joué une fois à l'arrivée sur l'écran de fin (Pixabay, Content License)
+END_SOUND = ASSETS_DIR / "sounds" / "item-collected-1-367087.mp3"
 
 # Physique du joueur (en pixels par frame)
 PLAYER_SPEED = 5
@@ -75,9 +85,5 @@ PLATFORM_EDGE_COLOR = NEON_BLUE
 PLATFORM_EDGE_HEIGHT = 4
 PLATFORM_TILE_WIDTH = 40
 
-# Chemins des assets
-ASSETS_PATH = "assets/"
-PLAYER_PATH = ASSETS_PATH + "player/"
-BADGES_PATH = "badges/"  # relatif à assets/ (load_image ajoute déjà assets/)
-#BACKGROUNDS_PATH = ASSETS_PATH + "backgrounds/"
-#UI_PATH = ASSETS_PATH + "ui/"
+# Dossier des badges, relatif à assets/ (load_image part de ASSETS_DIR)
+BADGES_PATH = "badges/"

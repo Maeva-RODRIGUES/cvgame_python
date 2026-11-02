@@ -3,6 +3,9 @@ from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 import subprocess
 import time
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent
 
 class ReloadHandler(FileSystemEventHandler):
     def __init__(self):
@@ -13,7 +16,7 @@ class ReloadHandler(FileSystemEventHandler):
         if self.process:
             self.process.kill()
         print("🚀 (Re)lancement de main.py")
-        self.process = subprocess.Popen([sys.executable, "main.py"], creationflags=subprocess.CREATE_NEW_PROCESS_GROUP)
+        self.process = subprocess.Popen([sys.executable, str(BASE_DIR / "main.py")], creationflags=subprocess.CREATE_NEW_PROCESS_GROUP)
 
     def on_modified(self, event):
         if event.src_path.endswith(".py") and not event.src_path.endswith("auto_reload.py"):
@@ -21,7 +24,7 @@ class ReloadHandler(FileSystemEventHandler):
             self.start_process()
 
 if __name__ == "__main__":
-    path = "."
+    path = str(BASE_DIR)
     event_handler = ReloadHandler()
     observer = Observer()
     observer.schedule(event_handler, path=path, recursive=True)

@@ -1,4 +1,3 @@
-import os
 from enum import Enum, auto
 
 import pygame
@@ -20,6 +19,8 @@ from settings import (
     SIGN_X,
     BADGE_SOUND,
     END_SOUND,
+    LEVELS_PATH,
+    END_SCREEN_PATH,
 )
 from classes.ground import Ground
 from classes.sign import Sign
@@ -28,10 +29,7 @@ from classes.dialogue_bubble import DialogueBubble
 from classes.level import LevelManager
 from classes.hud import Hud
 from classes.end_screen import EndScreen
-from utils import DATA_DIR
 
-LEVELS_PATH = "data/levels.json"
-END_SCREEN_PATH = "data/end_screen.json"
 
 
 class State(Enum):
@@ -54,8 +52,8 @@ class Game:
         self.title_font = pygame.font.Font(None, 48)
         self.text_font = pygame.font.Font(None, 32)
         self.title_text = self.title_font.render(GAME_SUBTITLE, True, TEXT_COLOR)
-        self.badge_sound = pygame.mixer.Sound(os.path.join(DATA_DIR, BADGE_SOUND))
-        self.end_sound = pygame.mixer.Sound(os.path.join(DATA_DIR, END_SOUND))
+        self.badge_sound = pygame.mixer.Sound(BADGE_SOUND)
+        self.end_sound = pygame.mixer.Sound(END_SOUND)
 
         self.ground = Ground(GROUND_Y)
         self.sign = Sign(SIGN_X, GROUND_Y)

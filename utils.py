@@ -1,11 +1,9 @@
-import os
 import pygame as pg
-
-# Répertoire des assets
-DATA_DIR = os.path.join(os.path.dirname(__file__), "assets")
+from settings import ASSETS_DIR
 
 def load_image(name, colorkey=None, scale=None, size=None):
-    fullname = os.path.join(DATA_DIR, name)
+    """Charge assets/<name>. colorkey=-1 : la couleur du pixel (0, 0) devient transparente."""
+    fullname = ASSETS_DIR / name
     try:
         image = pg.image.load(fullname)
     except pg.error as e:
@@ -25,9 +23,8 @@ def load_image(name, colorkey=None, scale=None, size=None):
     # Gestion de la transparence
     if colorkey is not None:
         if colorkey == -1:
-            colorkey = image.get_at((0, 0))
-        if isinstance(colorkey, (tuple, list)) and len(colorkey) == 3:
-            image.set_colorkey(colorkey, pg.RLEACCEL)
+            colorkey = image.get_at((0, 0))  # Color RGBA (4 valeurs), acceptée par set_colorkey
+        image.set_colorkey(colorkey, pg.RLEACCEL)
 
     return image, image.get_rect()
 
