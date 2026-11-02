@@ -54,9 +54,9 @@ class DialogueBubble:
 
     def _load_dialogue(self):
         """Charge le titre et le dialogue du niveau courant."""
-        data = self.levels.get(self.current_level, {})
-        self.title = data.get("title", "")
-        self.text = wrap_text(data.get("dialogue", ""), self.font, self.text_area.width)
+        data = self.levels[self.current_level]
+        self.title = data.title
+        self.text = wrap_text(data.dialogue, self.font, self.text_area.width)
 
     def _total_chars(self):
         return sum(len(line) for line in self.text)
