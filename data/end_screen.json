@@ -1,0 +1,33 @@
+{
+  "title": "Mission accomplie : Maëva est prête pour son CDI !",
+  "skills_title": "Compétences ramassées",
+  "skills": {
+    "rh": "RH",
+    "reconversion": "Reconversion",
+    "web": "Web",
+    "backend": "Backend",
+    "fullstack": "Fullstack",
+    "data": "Data",
+    "objectif": "Objectif CDI"
+  },
+  "achievements_title": "Réalisations clés",
+  "achievements": [
+    "Pipelines Spark sur des volumes jusqu'à 300 milliards de lignes",
+    "Qualité et fiabilité des données : tests unitaires et d'intégration",
+    "Conception d'une automatisation par IA générative qui accélère de plusieurs heures la création de tables Silver",
+    "Librairies Python réutilisables"
+  ],
+  "education_title": "Formations",
+  "education": [
+    "Titre Professionnel Développeur Web et Web Mobile (bac+2, obtenu, La Piscine)",
+    "Titre Professionnel Concepteur Développeur d'Applications (bac+3, obtenu, Wild Code School)",
+    "Titre Professionnel Data Engineer (bac+5, en cours, DataScientest)"
+  ],
+  "contact_title": "Contact",
+  "contact": [
+    "LinkedIn : https://www.linkedin.com/in/maeva-rodrigues/",
+    "GitHub : https://github.com/Maeva-RODRIGUES"
+  ],
+  "availability": "Disponible sous 15 jours",
+  "controls": "Espace pour rejouer   -   Échap pour quitter"
+}

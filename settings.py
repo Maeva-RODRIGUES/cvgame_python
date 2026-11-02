@@ -52,11 +52,15 @@ BADGE_TYPES = [
     "rh",
     "reconversion",
     "web",
-    "abap",
+    "backend",
     "fullstack",
     "data",
     "objectif"
 ]
+
+# Dernier badge : remplacé par le drapeau final
+FINAL_BADGE = "objectif"
+FLAG_HEIGHT = 96
 
 # Tailles des sprites
 PLAYER_SIZE = (64, 110)  # garde le ratio du sprite recadré (523 x 900)

@@ -10,7 +10,7 @@ from settings import (
     DARK_PURPLE,
     GOLD,
 )
-from utils import DATA_DIR, load_image
+from utils import DATA_DIR, load_image, wrap_text
 
 HINT_TEXT = "Espace pour continuer"
 
@@ -57,22 +57,7 @@ class DialogueBubble:
         """Charge le titre et le dialogue du niveau courant."""
         data = self.levels.get(self.current_level, {})
         self.title = data.get("title", "")
-        self.text = self.wrap_text(data.get("dialogue", ""), self.font, self.text_area.width)
-
-    @staticmethod
-    def wrap_text(text, font, max_width):
-        """Découpe le texte en lignes dont la largeur en pixels ne dépasse pas `max_width`."""
-        lines, current = [], ""
-        for word in text.split():
-            candidate = f"{current} {word}" if current else word
-            if current and font.size(candidate)[0] > max_width:
-                lines.append(current)
-                current = word
-            else:
-                current = candidate
-        if current:
-            lines.append(current)
-        return lines
+        self.text = wrap_text(data.get("dialogue", ""), self.font, self.text_area.width)
 
     def _total_chars(self):
         return sum(len(line) for line in self.text)

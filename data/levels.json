@@ -30,8 +30,8 @@
     "badge_pos": {"x": 1980, "y": 313}
   },
   "level_3": {
-    "title": "La Piscine",
-    "dialogue": "2024 : formation Développeur Web et Web Mobile. HTML, CSS, JavaScript, React, Node.js : mes premières applis !",
+    "title": "Bootcamp - La Piscine",
+    "dialogue": "2024 : formation Développeur Web et Web Mobile (Bac+2). HTML, CSS, JavaScript, React, Node.js : mes premières applis !",
     "badge": "web",
     "width": 2200,
     "platforms": [
@@ -47,9 +47,9 @@
     "badge_pos": {"x": 2080, "y": 223}
   },
   "level_4": {
-    "title": "CGI - Back-end",
+    "title": "CGI - Développeuse Back-end",
     "dialogue": "Novembre 2024 : alternance chez CGI avec la Wild Code School. Développement back-end ABAP sur SAP, dans l'aéronautique.",
-    "badge": "abap",
+    "badge": "backend",
     "width": 2300,
     "platforms": [
       {"x": 300, "y": 553, "width": 150},
@@ -64,7 +64,7 @@
     "badge_pos": {"x": 2180, "y": 223}
   },
   "level_5": {
-    "title": "CGI - Fullstack",
+    "title": "CGI - Développeuse Fullstack",
     "dialogue": "Septembre 2025 : je passe fullstack chez CGI. React.js, Node.js et API REST. Et le titre Concepteur Développeur d'Applications (bac+3) en poche !",
     "badge": "fullstack",
     "width": 2400,
@@ -82,8 +82,8 @@
     "badge_pos": {"x": 2280, "y": 223}
   },
   "level_6": {
-    "title": "Skeepers - Data",
-    "dialogue": "Janvier 2026 : data engineer chez Skeepers. Pipelines Python, PySpark et Scala, Kafka, Temporal, jusqu'à 300 milliards de lignes !",
+    "title": "Skeepers - Data Engineer",
+    "dialogue": "Janvier 2026 : data engineer chez Skeepers. Pipelines Python, PySpark, Scala et Java, Kafka, Temporal, jusqu'à 300 milliards de lignes !",
     "badge": "data",
     "width": 2400,
     "platforms": [

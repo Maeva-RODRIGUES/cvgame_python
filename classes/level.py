@@ -1,6 +1,7 @@
 import json
 from classes.platform import Platform
-from classes.badge import Badge
+from classes.badge import Badge, FinalFlag
+from settings import BADGE_SIZE, FINAL_BADGE
 
 class LevelManager:
     def __init__(self, json_path):
@@ -41,8 +42,17 @@ class LevelManager:
         # Badge du niveau : type + position (un seul par niveau)
         badge_pos = data.get("badge_pos")
         self.badges = []
-        if badge_pos:
+        if badge_pos and data["badge"] == FINAL_BADGE:
+            self.badges = [self._final_flag(badge_pos, data["badge"])]
+        elif badge_pos:
             self.badges = [Badge(badge_pos["x"], badge_pos["y"], data["badge"])]
+
+    def _final_flag(self, badge_pos, badge_type):
+        """Drapeau planté sur la plateforme située sous la position du badge."""
+        x = badge_pos["x"] + BADGE_SIZE[0] // 2
+        below = [p for p in self.platforms if p.rect.left <= x < p.rect.right and p.rect.top > badge_pos["y"]]
+        top = min(below, key=lambda p: p.rect.top).rect.top
+        return FinalFlag((x, top), badge_type)
 
     def next_level(self):
         """Passe au niveau suivant"""

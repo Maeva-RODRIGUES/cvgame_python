@@ -3,7 +3,7 @@ import os
 import random
 
 import pygame
-from settings import BADGE_SIZE, BADGES_PATH, NEON_PINK, NEON_BLUE, GOLD, WHITE, BLACK
+from settings import BADGE_SIZE, BADGES_PATH, FLAG_HEIGHT, NEON_PINK, NEON_BLUE, GOLD, WHITE, BLACK
 from utils import DATA_DIR, load_image
 
 # Sprite de secours : couleur et lettres par type de badge
@@ -11,7 +11,7 @@ FALLBACK_COLORS = {
     "rh": NEON_PINK,
     "reconversion": NEON_BLUE,
     "web": GOLD,
-    "abap": (128, 255, 128),       # Vert clair
+    "backend": (128, 255, 128),    # Vert clair
     "fullstack": (255, 128, 0),    # Orange
     "data": (128, 0, 255),         # Violet
     "objectif": (255, 255, 128),   # Jaune clair
@@ -20,7 +20,7 @@ FALLBACK_LETTERS = {
     "rh": "RH",
     "reconversion": "R",
     "web": "W",
-    "abap": "A",
+    "backend": "B",
     "fullstack": "FS",
     "data": "D",
     "objectif": "O",
@@ -106,3 +106,29 @@ class Badge:
                 screen, GOLD,
                 (cx + random.randint(-20, 20), cy + random.randint(-20, 20), size, size),
             )
+
+
+class FinalFlag(Badge):
+    """Drapeau final : remplace le dernier badge, planté sur sa plateforme.
+
+    `midbottom` : point (monde) où le pied du mât touche la plateforme.
+    """
+
+    def __init__(self, midbottom, badge_type):
+        super().__init__(0, 0, badge_type)
+        self.rect = self.sprite.get_rect(midbottom=midbottom)
+
+    def load_sprite(self):
+        image, _ = load_image("objects/final_flag.png")
+        image = image.convert_alpha()
+        # Le fichier a de grandes marges transparentes : on garde la zone visible
+        visible = image.subsurface(image.get_bounding_rect(min_alpha=16))
+        width = round(visible.get_width() * FLAG_HEIGHT / visible.get_height())
+        return pygame.transform.smoothscale(visible, (width, FLAG_HEIGHT))
+
+    def update(self):
+        pass  # le drapeau ne flotte pas
+
+    def draw(self, screen, camera_x):
+        if not self.collected:
+            screen.blit(self.sprite, (self.rect.x - camera_x, self.rect.y))

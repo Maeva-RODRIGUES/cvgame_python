@@ -31,3 +31,18 @@ def load_image(name, colorkey=None, scale=None, size=None):
 
     return image, image.get_rect()
 
+
+
+def wrap_text(text, font, max_width):
+    """Découpe le texte en lignes dont la largeur en pixels ne dépasse pas `max_width`."""
+    lines, current = [], ""
+    for word in text.split():
+        candidate = f"{current} {word}" if current else word
+        if current and font.size(candidate)[0] > max_width:
+            lines.append(current)
+            current = word
+        else:
+            current = candidate
+    if current:
+        lines.append(current)
+    return lines

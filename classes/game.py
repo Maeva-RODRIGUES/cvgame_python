@@ -26,9 +26,11 @@ from classes.player import Player
 from classes.dialogue_bubble import DialogueBubble
 from classes.level import LevelManager
 from classes.hud import Hud
+from classes.end_screen import EndScreen
 from utils import DATA_DIR
 
 LEVELS_PATH = "data/levels.json"
+END_SCREEN_PATH = "data/end_screen.json"
 
 
 class State(Enum):
@@ -57,6 +59,7 @@ class Game:
         self.sign = Sign(SIGN_X, GROUND_Y)
         self.player = Player(x=PLAYER_START_X, y=0)
         self.hud = Hud()
+        self.end_screen = EndScreen(END_SCREEN_PATH, self.hud.sprites)
 
         self.state = State.TITLE
         self.running = True
@@ -106,11 +109,22 @@ class Game:
             self._handle_title_event(event)
         elif self.state == State.PLAYING:
             self._handle_playing_event(event)
+        else:
+            self._handle_end_event(event)
 
     def _handle_title_event(self, event):
         if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
             self.new_game()
             self.state = State.PLAYING
+
+    def _handle_end_event(self, event):
+        if event.type != pygame.KEYDOWN:
+            return
+        if event.key == pygame.K_SPACE:  # rejouer
+            self.new_game()
+            self.state = State.PLAYING
+        elif event.key == pygame.K_ESCAPE:  # quitter
+            self.running = False
 
     def _handle_playing_event(self, event):
         # Espace : afficher la bulle, accélérer le texte ou la fermer
@@ -241,5 +255,4 @@ class Game:
                       self.levels.title, self.collected)
 
     def _draw_end(self):
-        # Version minimale : l'écran de fin complet arrive en 2.4
-        self._draw_centered(self.text_font.render("Fin de la partie", True, GOLD), SCREEN_HEIGHT // 2)
+        self.end_screen.draw(self.screen, self.collected)
