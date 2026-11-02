@@ -39,7 +39,12 @@ PADDING = 20
 GROUND_HEIGHT = 77
 GROUND_Y = SCREEN_HEIGHT - GROUND_HEIGHT
 
-BUBBLE_OFFSET_Y = 220
+# Bulle de dialogue (bubble.png recadrée : 452 x 312, queue comprise)
+BUBBLE_POS = (30, 70)                  # coin haut gauche à l'écran, sous le titre
+BUBBLE_FRAME = (6, 6, 440, 228)        # intérieur du cadre, relatif à l'image recadrée
+BUBBLE_PADDING = 16
+BUBBLE_LINE_HEIGHT = 28
+BUBBLE_CHAR_DELAY_MS = 40              # vitesse de la machine à écrire
 
 # Types de badges
 BADGE_TYPES = [

@@ -104,6 +104,7 @@ while running:
             badge_sound.play()
             # Bulle du niveau terminé ; le passage au suivant se fait à sa fermeture
             level_complete = True
+            bubble.set_level(levels.current_level)  # relance la machine à écrire
             if not bubble.visible:
                 bubble.toggle()
 
