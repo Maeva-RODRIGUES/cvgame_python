@@ -25,8 +25,9 @@ FPS = 60
 # Marges ou padding éventuels
 PADDING = 20
 
-# Offset pour aligner le joueur sur la plateforme
-PLAYER_OFFSET_Y = 300
+# Sol : la tuile (platform.png recadrée) fait 77 px de haut et touche le bas de l'écran
+GROUND_HEIGHT = 77
+GROUND_Y = SCREEN_HEIGHT - GROUND_HEIGHT
 
 BUBBLE_OFFSET_Y = 220
 
@@ -42,7 +43,7 @@ BADGE_TYPES = [
 ]
 
 # Tailles des sprites
-PLAYER_SIZE = (64, 64)
+PLAYER_SIZE = (64, 110)  # garde le ratio du sprite recadré (523 x 900)
 BADGE_SIZE = (32, 32)
 PLATFORM_HEIGHT = 20
 

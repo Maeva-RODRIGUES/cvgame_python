@@ -6,7 +6,7 @@ from settings import (
     FPS,
     GAME_TITLE,
     TEXT_COLOR,
-    PLAYER_OFFSET_Y
+    GROUND_Y,
 )
 from classes.platform import Platform
 from classes.player import Player
@@ -22,14 +22,13 @@ pygame.display.set_caption(GAME_TITLE)
 clock = pygame.time.Clock()
 
 # Objets du jeu
-platform = Platform(y_pos=380) 
+platform = Platform(y_pos=GROUND_Y)
 player = Player(x=50, y=0)  
 levels = LevelManager("data/levels.json")
 bubble = DialogueBubble(screen, levels.levels, font_size=24, color=TEXT_COLOR)
 
-# Niveau du sol (coordonnée monde Y) et position de départ du joueur
-ground_y = platform.rect.top + PLAYER_OFFSET_Y
-player.rect.bottom = ground_y
+# Position de départ du joueur : les pieds sur le sol
+player.rect.bottom = GROUND_Y
 
 # Texte du jeu
 pygame.font.init()
@@ -60,7 +59,7 @@ while running:
 
     # ----- 2. LOGIQUE (coordonnées monde) -----
     keys = pygame.key.get_pressed()
-    player.update(keys, ground_y)
+    player.update(keys, GROUND_Y)
 
     # La caméra centre le joueur, sans jamais montrer x < 0
     camera_x = max(0, player.rect.centerx - SCREEN_WIDTH // 2)

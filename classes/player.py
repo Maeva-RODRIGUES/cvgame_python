@@ -1,5 +1,5 @@
 import pygame as pg
-from settings import PLAYER_SPEED
+from settings import PLAYER_SPEED, PLAYER_SIZE
 from utils import load_image
 
 
@@ -8,7 +8,7 @@ class Player(pg.sprite.Sprite):
 
     def __init__(self, x, y):
         super().__init__()
-        self.image, self.rect = load_image("player/idle.png", size=(128, 128))
+        self.image, self.rect = load_image("player/idle.png", size=PLAYER_SIZE)
         self.rect.x = x
         self.rect.y = y
         self.velocity = pg.math.Vector2(0, 0)
