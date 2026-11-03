@@ -1,93 +1,128 @@
-## 🎮 Hack Ton Job - CV Game
+# Hack Ton Job - CV Game
 
-![Python](https://img.shields.io/badge/code-python-blue?logo=python)
-![Status](https://img.shields.io/badge/status-en%20cours-orange)
-![Pygame](https://img.shields.io/badge/pygame-2.5.2-lightgrey?logo=pygame)
+[![CI](https://github.com/Maeva-RODRIGUES/cvgame_python/actions/workflows/ci.yml/badge.svg)](https://github.com/Maeva-RODRIGUES/cvgame_python/actions/workflows/ci.yml)
+![Python](https://img.shields.io/badge/python-3.10%2B-blue?logo=python)
+![Pygame](https://img.shields.io/badge/pygame-2.6.1-green)
+![Licence](https://img.shields.io/badge/licence-MIT-lightgrey)
 
+**Data engineer à la recherche d'un CDI en développement back-end Python ou en data engineering**, j'ai raconté mon parcours sous la forme d'un petit jeu de plateforme en Python : 7 niveaux, 7 compétences à ramasser, un CDI au bout.
 
-[![Typing SVG](https://readme-typing-svg.demolab.com/?lines=Bienvenue+dans+Hack+ton+job+CV+game+!)](https://git.io/typing-svg).
+### [▶ Jouer en ligne](https://maeva-rodrigues.github.io/cvgame_python/)
 
-Un mini jeu développé en Python avec Pygame, qui transforme mon **parcours professionnel** en une **expérience ludique et interactive**.
+Directement dans le navigateur, sans rien installer (premier chargement : quelques secondes).
 
-👩‍💻 Le joueur incarne **Maëva** (*moi-même*), développeuse en reconversion, et traverse différentes étapes de son parcours (RH, reconversion, formation, projets, etc.) tout en découvrant mes compétences, mes projets et mes objectifs de carrière.  
-Une manière originale de **me présenter aux recruteurs** et **de démontrer mes compétences Python** dans un projet complet.
-
-![Mockup du jeu](assets/mockup.png)
-
----
-
-## 🎯 Objectifs du projet
-
-- ✅ Valoriser mon parcours pro de façon créative  
-- ✅ Montrer ma capacité à structurer un projet Python avec Pygame  
-- ✅ Renforcer mes compétences en développement 2D, architecture logicielle et POO  
-- ✅ Proposer un portfolio **original, immersif et mémorable**
+![Le jeu : niveau Data Engineer, bulle de dialogue et badges ramassés](docs/screenshot_game.png)
 
 ---
 
-## 🧠 Stack technique
+## Le parcours en 3 lignes
 
-- **Python 3**
-- **Pygame**
-- **Figma** (pour les maquettes)
-- **Pixel Art** (sprites personnalisés)
-- Architecture MVC simple (séparation `main.py`, classes, assets)
+1. **2010-2023** : 13 ans dans les ressources humaines, puis reconversion dans le développement.
+2. **2024-2025** : titre Développeur Web et Web Mobile (bac+2), puis alternance chez CGI, en back-end ABAP sur SAP, puis en fullstack React / Node.js, avec le titre Concepteur Développeur d'Applications (bac+3).
+3. **Depuis 2026** : data engineer chez Skeepers, sur des pipelines Python et PySpark qui traitent jusqu'à 300 milliards de lignes. Titre Data Engineer (bac+5) en cours.
 
----
-
-## 🗂️ Structure du projet
-
-cvgame_python/  
-├── assets/                  # Sprites, backgrounds, sons  
-├── classes/                 # Classes du jeu (joueur, bulles, zones…)  
-├── venv/                    # Environnement virtuel Python  
-├── main.py                  # Point d'entrée du jeu  
-├── settings.py              # Paramètres globaux  
-├── requirements.txt         # Dépendances  
-└── README.md                # Ce fichier
+![Écran de fin : compétences, réalisations, formations et contact](docs/screenshot_end.png)
 
 ---
 
-## ▶️ Lancer le jeu
+## Ce que ce projet démontre
 
-**1. Créer un environnement virtuel**  
-`python -m venv venv`
-
-**2. Activer le venv (Windows)**  
-`.\venv\Scripts\activate`
-
-**3. Installer les dépendances**  
-`pip install -r requirements.txt`
-
-**4. Lancer le jeu**  
-`python main.py`
+- **Architecture claire** : une classe `Game` pilotée par une machine à états (`TITLE`, `PLAYING`, `END`). La boucle suit toujours le même ordre : événements, puis logique, puis affichage.
+- **Coordonnées monde et caméra** : les niveaux font jusqu'à 2 500 px de large. Tout est positionné dans le monde, et la caméra (bornée aux limites du niveau) convertit en coordonnées écran au moment du dessin.
+- **Contenu séparé du code** : niveaux, dialogues et écran de fin sont dans des fichiers JSON (`data/`). Les niveaux sont **validés au chargement** avec des `dataclasses` : un champ manquant ou un badge inconnu donne un message clair, avec le niveau et le champ concernés.
+- **Tests automatisés** (pytest, sans fenêtre) : chargement des niveaux, validation des données, découpage du texte, collisions, ramassage unique des badges. Un test simule de vrais sauts pour **garantir que chaque plateforme de chaque niveau est atteignable**.
+- **Qualité et CI** : `ruff` (lint et formatage) et `pytest` tournent sur GitHub Actions à chaque push, avec Python 3.10 et 3.12.
+- **Publication web** : la boucle de jeu est asynchrone pour tourner dans le navigateur avec pygbag (WebAssembly). Le site est reconstruit et publié sur GitHub Pages automatiquement quand la CI passe.
 
 ---
 
-## 🧩 Ce que le jeu contient
+## Contrôles
 
-- Déplacement gauche/droite du joueur  
-- Plateformes en pixel art  
-- Bulles de texte automatiques (zones de narration)  
-- Histoire de ma reconversion  
-- Objectifs professionnels mis en scène  
-- Drapeau de fin : **Objectif Alternance Python/Devops 💼**
-
----
-
-## 🔥 Ce projet me permet de…
-
-- Me démarquer auprès des recruteurs 👀  
-- Montrer que je suis capable de **structurer un projet from scratch**  
-- M’amuser tout en montant en compétences sur Python / Pygame  
-- Valoriser mes expériences avec une vraie touche personnelle
+| Touche | Action |
+|---|---|
+| ← → | Se déplacer |
+| ↑ | Sauter |
+| Espace | Ouvrir la bulle, accélérer le texte, la fermer |
+| Échap | Quitter (écran de fin) |
 
 ---
 
-## 🧠 À propos
+## Installation
 
-Je m'appelle **Maëva Rodrigues**, développeuse en reconversion, passionnée par la tech et l'apprentissage.  
-Ce projet s’inscrit dans mon objectif de trouver une **alternance en développement Python/Devops** dès **janvier 2026**.
+Prérequis : Python 3.10 ou plus récent.
 
-📬 Tu veux échanger avec moi ?  
-➡️ [LinkedIn](https://www.linkedin.com/in/maeva-rodrigues-dev/)  
+**Mac / Linux**
+
+```bash
+git clone https://github.com/Maeva-RODRIGUES/cvgame_python.git
+cd cvgame_python
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+python main.py
+```
+
+**Windows (PowerShell)**
+
+```powershell
+git clone https://github.com/Maeva-RODRIGUES/cvgame_python.git
+cd cvgame_python
+python -m venv venv
+.\venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+python main.py
+```
+
+**Pour développer** (tests, lint, version web) :
+
+```bash
+pip install -r requirements-dev.txt
+python -m pytest           # tests
+ruff check . && ruff format --check .
+python -m pygbag .         # version navigateur sur http://localhost:8000
+```
+
+---
+
+## Stack
+
+| Outil | Version |
+|---|---|
+| Python | 3.10+ (testé en 3.10 et 3.12) |
+| pygame | 2.6.1 (pygame-ce dans le navigateur) |
+| pygbag | 0.9.3 |
+| pytest | 9.2.0 |
+| ruff | 0.17.3 |
+| GitHub Actions / GitHub Pages | CI et hébergement |
+
+## Structure
+
+```
+cvgame_python/
+├── main.py              # Point d'entrée (boucle asynchrone)
+├── settings.py          # Constantes : écran, physique, couleurs, chemins
+├── utils.py             # Chargement d'images, découpage du texte
+├── classes/             # Game (états), joueur, niveaux, badges, bulle, HUD, écran de fin
+├── data/                # levels.json et end_screen.json : tout le contenu du jeu
+├── assets/              # Sprites et sons
+├── tests/               # Tests pytest
+├── tools/make_badges.py # Génère les badges en pixel art
+└── .github/workflows/   # CI (lint + tests) et déploiement GitHub Pages
+```
+
+---
+
+## Crédits
+
+- **Sprites** (personnage, panneau, sol, bulle, drapeau) : générés par IA puis retouchés.
+- **Badges** : pixel art généré par le script `tools/make_badges.py`.
+- **Sons** : [Pixabay](https://pixabay.com/), sous [Pixabay Content License](https://pixabay.com/service/license-summary/).
+
+## Licence
+
+Code sous licence [MIT](LICENSE).
+
+## Contact
+
+- LinkedIn : [linkedin.com/in/maeva-rodrigues](https://www.linkedin.com/in/maeva-rodrigues/)
+- GitHub : [github.com/Maeva-RODRIGUES](https://github.com/Maeva-RODRIGUES)
